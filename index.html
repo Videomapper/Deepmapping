@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeepMapping</title>
+    <title>DeepMapping - Artistas Visuales</title>
     <style>
-        /* CSS para centrar el video */
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;  /* Tipo de letra */
+            margin: 0;
+            padding: 0;
+            background-color: #000;  /* Fondo oscuro */
+            color: #fff;  /* Texto blanco */
+        }
+
+        /* Centrado del video */
         .video-container {
             display: flex;
             justify-content: center;  /* Centrado horizontal */
             align-items: center;      /* Centrado vertical */
             height: 100vh;            /* Altura completa de la ventana */
             margin: 0;                /* Sin márgenes */
-            overflow: hidden;         /* Para evitar barras de desplazamiento */
+            overflow: hidden;         /* Evita barras de desplazamiento */
         }
 
         video {
@@ -20,20 +29,108 @@
             max-height: 100%;         /* Limita la altura del video */
         }
 
-        /* Estilo para el texto principal */
+        /* Título principal */
         .title {
-            font-size: 4rem;          /* Tamaño grande para el título */
-            font-weight: bold;        /* Negrita */
-            text-align: center;       /* Centrado del texto */
-            color: white;             /* Color inicial del texto */
-            transition: color 0.3s ease; /* Transición suave para el cambio de color */
-            position: absolute;       /* Posicionar sobre el video */
-            z-index: 10;              /* Asegura que el texto esté por encima del video */
+            font-size: 4rem;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            transition: color 0.3s ease;
+            position: absolute;
+            z-index: 10;
         }
 
-        /* Efecto hover para cambiar el color del texto */
         .title:hover {
-            color: #ff5733;  /* Cambio de color (puedes personalizarlo) */
+            color: #ff5733;  /* Cambio de color al pasar el cursor */
+        }
+
+        /* Sección de contenido (sobre nosotros) */
+        .about {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Sección de contacto */
+        .contact {
+            background-color: #333;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact input, .contact textarea {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #fff;
+            background-color: #222;
+            color: #fff;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .contact button {
+            background-color: #ff5733;
+            padding: 12px 30px;
+            border: none;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .contact button:hover {
+            background-color: #ff2a00;
+        }
+
+        /* Redes sociales */
+        .social-links {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .social-links a {
+            margin: 0 15px;
+            font-size: 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff5733;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
         }
     </style>
 </head>
@@ -51,6 +148,34 @@
         <h1 class="title">DeepMapping</h1>
     </header>
 
-    <!-- Resto del contenido de la página -->
+    <!-- Sección sobre nosotros -->
+    <section class="about">
+        <h2>Sobre Nosotros</h2>
+        <p>Somos artistas visuales dedicados a la creación de experiencias inmersivas a través del videomapping. Con más de 10 años de experiencia, buscamos conectar el arte digital con el espectador de una manera única. Nuestro trabajo se enfoca en transformar espacios y crear emociones visuales.</p>
+    </section>
+
+    <!-- Sección de contacto -->
+    <section class="contact">
+        <h2>Contacto</h2>
+        <form action="mailto:tu-correo@dominio.com" method="POST" enctype="text/plain">
+            <input type="text" name="name" placeholder="Tu nombre" required>
+            <input type="email" name="email" placeholder="Tu correo electrónico" required>
+            <textarea name="message" placeholder="Tu mensaje" rows="5" required></textarea>
+            <button type="submit">Enviar Mensaje</button>
+        </form>
+    </section>
+
+    <!-- Sección de redes sociales -->
+    <section class="social-links">
+        <a href="https://www.facebook.com/deepmapping" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/deepmapping" target="_blank">Instagram</a>
+        <a href="https://www.twitter.com/deepmapping" target="_blank">Twitter</a>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 DeepMapping. Todos los derechos reservados.</p>
+    </footer>
+
 </body>
 </html>
