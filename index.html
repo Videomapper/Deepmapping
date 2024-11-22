@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DeepMapping: Experiencias inmersivas de videomapping profesional.">
+    <title>DeepMapping</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: #fff;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        header p {
+            font-size: 1.2em;
+            color: #ccc;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .contact-form {
+            margin-top: 30px;
+        }
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            background-color: #222;
+            color: #fff;
+        }
+        .contact-form button {
+            background-color: #0056b3;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #222;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DeepMapping</h1>
+        <p>Transformamos espacios en experiencias inmersivas</p>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>Sobre DeepMapping</h2>
+            <p>DeepMapping combina arte y tecnología para crear espectáculos de videomapping que cautivan y transforman. Especializados en eventos culturales, arquitectónicos y comerciales, llevamos tus ideas a otro nivel.</p>
+        </section>
+
+        <section id="gallery">
+            <h2>Galería</h2>
+            <div class="gallery">
+                <img src="image1.jpg" alt="Proyección en edificio">
+                <img src="image2.jpg" alt="Arte digital">
+                <img src="image3.jpg" alt="Evento cultural">
+                <img src="image4.jpg" alt="Show inmersivo">
+                <!-- Agrega más imágenes según sea necesario -->
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contacto</h2>
+            <form class="contact-form" action="https://formspree.io/f/tu-correo-aqui" method="POST">
+                <input type="text" name="name" placeholder="Tu nombre" required>
+                <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                <textarea name="message" rows="5" placeholder="Tu mensaje" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2024 DeepMapping. Todos los derechos reservados.
+    </footer>
+</body>
+</html>
