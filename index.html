@@ -51,23 +51,47 @@
             color: #00f5ff; /* Cambia a un color azul brillante al pasar el cursor */
         }
 
-        /* Contenedor para la información */
-        .content {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translateX(-50%);
+        /* Estilos para las secciones */
+        .content, .about, .gallery, .contact-form {
+            position: relative;
+            z-index: 2;
             text-align: center;
+            padding: 50px 0;
+        }
+
+        .content p, .about p {
             font-size: 1.2em;
-            width: 80%;
-            max-width: 1200px;
-            padding: 10px;
+            margin: 20px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .contact-info {
-            margin-top: 40px;
+        .about {
+            background-color: #222;
         }
 
+        .gallery {
+            background-color: #333;
+            padding-bottom: 100px;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Estilos para la galería */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Estilos para redes sociales */
         .contact-info a {
             color: #fff;
             text-decoration: none;
@@ -81,11 +105,6 @@
         }
 
         /* Estilos para el formulario de contacto */
-        .contact-form {
-            margin-top: 40px;
-            text-align: center;
-        }
-
         .contact-form input, .contact-form textarea {
             width: 100%;
             padding: 10px;
@@ -124,9 +143,26 @@
     <!-- Encabezado -->
     <header>DeepMapping</header>
 
-    <!-- Contenido -->
+    <!-- Sección "Nosotros" -->
+    <div class="about">
+        <h2>¿Quiénes Somos?</h2>
+        <p>DeepMapping es un colectivo de artistas visuales enfocados en la creación de experiencias inmersivas a través de videomapping. Utilizando tecnología avanzada y creatividad, buscamos transformar espacios y cautivar al público con visuales generativos que interactúan con el entorno.</p>
+    </div>
+
+    <!-- Galería de imágenes -->
+    <div class="gallery">
+        <h2>Nuestra Galería</h2>
+        <div class="gallery-container">
+            <img src="assets/images/galeria1.jpg" alt="Galería de DeepMapping">
+            <img src="assets/images/galeria2.jpg" alt="Galería de DeepMapping">
+            <img src="assets/images/galeria3.jpg" alt="Galería de DeepMapping">
+            <img src="assets/images/galeria4.jpg" alt="Galería de DeepMapping">
+        </div>
+    </div>
+
+    <!-- Contenido adicional -->
     <div class="content">
-        <p>DeepMapping es un proyecto de videomapping creado por artistas visuales para ofrecer experiencias inmersivas e interactivas. A través del uso de tecnología de vanguardia y diseño creativo, buscamos conectar al público con nuevas formas de expresión visual.</p>
+        <p>DeepMapping es un proyecto que conecta arte y tecnología, transformando cualquier espacio en una obra de arte interactiva. Trabajamos en colaboración con artistas, diseñadores y tecnólogos para crear experiencias únicas que fascinan e inspiran.</p>
         
         <!-- Redes sociales -->
         <div class="contact-info">
