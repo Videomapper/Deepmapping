@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deepmapping</title>
-    <link rel="stylesheet" href="assets/styles/style.css">
     <style>
         /* Estilos generales */
         body, html {
@@ -15,7 +14,7 @@
             font-family: 'Arial', sans-serif;
             color: white;
             background-color: #000;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         /* Fondo de video */
@@ -29,25 +28,16 @@
             z-index: -2;
         }
 
-        /* Contenedores */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header, section, footer {
-            transition: background-color 0.3s ease;
-        }
-
-        header:hover, section:hover, footer:hover {
-            background-color: rgba(0, 0, 0, 0.6); /* Color suave al pasar el cursor */
-        }
-
+        /* Secciones principales */
         header, section, footer {
             padding: 50px 20px;
             text-align: center;
-            background: transparent;
+            background: rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        header:hover, section:hover, footer:hover {
+            background: rgba(0, 0, 0, 0.6);
         }
 
         header h1, section h2 {
@@ -71,26 +61,52 @@
             color: #00d9ff;
         }
 
-        /* Galería */
+        /* Carrusel de imágenes */
         .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
+            margin-top: 20px;
         }
 
         .gallery img {
             width: 150px;
             height: 150px;
             object-fit: cover;
-            cursor: pointer;
             border-radius: 10px;
+            cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .gallery img:hover {
             transform: scale(1.1);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Imagen ampliada */
+        .fullscreen {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            z-index: 1000;
+            border: 2px solid white;
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         /* Botón fijo */
@@ -109,25 +125,38 @@
             transform: scale(1.2);
         }
 
-        /* Partículas */
-        .particle {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background-color: white;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: particleMove 1s ease-out forwards;
+        /* Área de contacto */
+        .contact {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            text-align: center;
         }
 
-        @keyframes particleMove {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(0.5); }
+        .contact input, .contact textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .contact button {
+            padding: 10px 20px;
+            background: #00d9ff;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        .contact button:hover {
+            background: #00a3d0;
         }
     </style>
 </head>
 <body>
-    <!-- Fondo de video -->
+    <!-- Video de fondo -->
     <video id="videoBackground" autoplay muted loop>
         <source src="assets/video/page.mp4" type="video/mp4">
         Tu navegador no soporta videos HTML5.
@@ -147,8 +176,8 @@
     <section id="nosotros">
         <h2>Nosotros</h2>
         <p>
-            En Deepmapping fusionamos arte, tecnología e innovación. Nuestro equipo incluye artistas chiapanecos especializados 
-            en animación 2D y 3D, diseño, impresión 3D y videomapping. Transformamos cualquier espacio en un lienzo de luz y color.
+            Somos un equipo multidisciplinario de artistas chiapanecos, expertos en animación 2D y 3D, 
+            diseño gráfico, impresión 3D y videomapping. Creamos experiencias únicas que transforman espacios en lienzos vivos.
         </p>
     </section>
 
@@ -162,38 +191,28 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Deepmapping</p>
-    </footer>
+    <!-- Área de contacto -->
+    <section id="contacto" class="contact">
+        <h2>Contacto</h2>
+        <form>
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <textarea name="mensaje" placeholder="Escribe tu mensaje" rows="5" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
 
     <!-- Icono fijo -->
     <a href="https://www.facebook.com/" target="_blank">
         <img class="fixed-icon" src="assets/imagenes/hdlc.png" alt="HDLC">
     </a>
 
-    <!-- Script de partículas -->
+    <!-- Script para ampliar imágenes -->
     <script>
-        document.body.addEventListener('mousemove', (e) => {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = `${e.pageX}px`;
-            particle.style.top = `${e.pageY}px`;
-
-            const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            particle.style.backgroundColor = color;
-
-            document.body.appendChild(particle);
-
-            setTimeout(() => {
-                particle.remove();
-            }, 1000);
-        });
-
-        document.body.addEventListener('click', () => {
-            const particles = document.querySelectorAll('.particle');
-            particles.forEach(p => {
-                p.style.backgroundColor = '#ff0000'; // Cambia a rojo al hacer clic
+        const images = document.querySelectorAll('.gallery img');
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                img.classList.toggle('fullscreen');
             });
         });
     </script>
