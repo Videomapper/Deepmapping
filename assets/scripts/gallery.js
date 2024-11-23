@@ -1,3 +1,4 @@
+// Función para mostrar la galería al pasar el cursor
 const gallery = document.getElementById('gallery');
 const galleryImages = document.getElementById('gallery-images');
 
