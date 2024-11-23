@@ -15,6 +15,7 @@
             font-family: 'Arial', sans-serif;
             color: white;
             background-color: #000;
+            overflow: hidden;
         }
 
         /* Fondo de video */
@@ -35,21 +36,27 @@
             padding: 20px;
         }
 
-        header {
-            text-align: center;
+        header, section, footer {
+            transition: background-color 0.3s ease;
+        }
+
+        header:hover, section:hover, footer:hover {
+            background-color: rgba(0, 0, 0, 0.6); /* Color suave al pasar el cursor */
+        }
+
+        header, section, footer {
             padding: 50px 20px;
-            background: rgba(0, 0, 0, 0.6);
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            background: transparent;
         }
 
-        header img {
-            width: 150px;
-            margin-bottom: 20px;
-        }
-
-        header h1 {
+        header h1, section h2 {
             font-size: 2.5em;
-            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.8;
         }
 
         nav a {
@@ -64,35 +71,7 @@
             color: #00d9ff;
         }
 
-        /* Sección "Nosotros" */
-        section#nosotros {
-            padding: 50px 20px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        section#nosotros h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        section#nosotros p {
-            font-size: 1.2em;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        /* Sección "Galería" */
-        section#galeria {
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        section#galeria h2 {
-            font-size: 2em;
-            margin-bottom: 30px;
-        }
-
+        /* Galería */
         .gallery {
             display: flex;
             flex-wrap: wrap;
@@ -114,48 +93,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
         }
 
-        /* Contacto */
-        section#contacto {
-            padding: 50px 20px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        section#contacto h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        section#contacto form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        section#contacto input, section#contacto textarea {
-            width: calc(100% - 20px);
-            margin: 10px 0;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-
-        section#contacto button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background: #00d9ff;
-            color: white;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        section#contacto button:hover {
-            background: #0086a3;
-        }
-
-        /* Icono fijo */
+        /* Botón fijo */
         .fixed-icon {
             position: fixed;
             bottom: 20px;
@@ -171,12 +109,20 @@
             transform: scale(1.2);
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        /* Partículas */
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleMove 1s ease-out forwards;
+        }
+
+        @keyframes particleMove {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.5); }
         }
     </style>
 </head>
@@ -189,7 +135,6 @@
 
     <!-- Encabezado -->
     <header>
-        <img src="assets/imagenes/logo.png" alt="Deepmapping Logo">
         <h1>Deepmapping</h1>
         <nav>
             <a href="#nosotros">Nosotros</a>
@@ -199,12 +144,11 @@
     </header>
 
     <!-- Sección "Nosotros" -->
-    <section id="nosotros" class="container">
+    <section id="nosotros">
         <h2>Nosotros</h2>
         <p>
-            En *Deepmapping* fusionamos arte, tecnología e innovación. Nuestro equipo incluye artistas chiapanecos especializados en 
-            animación 2D y 3D, diseño, impresión 3D y videomapping. Creamos experiencias visuales únicas, destacando la creatividad 
-            y las tradiciones locales, transformando cualquier espacio en un lienzo de luz y color.
+            En Deepmapping fusionamos arte, tecnología e innovación. Nuestro equipo incluye artistas chiapanecos especializados 
+            en animación 2D y 3D, diseño, impresión 3D y videomapping. Transformamos cualquier espacio en un lienzo de luz y color.
         </p>
     </section>
 
@@ -215,39 +159,43 @@
             <img src="assets/imagenes/img1.jpg" alt="Imagen 1">
             <img src="assets/imagenes/img2.png" alt="Imagen 2">
             <img src="assets/imagenes/img3.png" alt="Imagen 3">
-            <img src="assets/imagenes/img4.png" alt="Imagen 4">
-            <img src="assets/imagenes/img5.jpg" alt="Imagen 5">
         </div>
-    </section>
-
-    <!-- Sección "Contacto" -->
-    <section id="contacto">
-        <h2>Contacto</h2>
-        <form>
-            <input type="text" placeholder="Nombre" required>
-            <input type="email" placeholder="Correo" required>
-            <textarea placeholder="Mensaje" rows="4"></textarea>
-            <button type="submit">Enviar</button>
-        </form>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>Visitas: <span id="visitCounter">0</span></p>
+        <p>&copy; 2024 Deepmapping</p>
     </footer>
 
-    <!-- Icono fijo en la esquina inferior derecha -->
+    <!-- Icono fijo -->
     <a href="https://www.facebook.com/" target="_blank">
         <img class="fixed-icon" src="assets/imagenes/hdlc.png" alt="HDLC">
     </a>
 
-    <!-- Script para contador -->
+    <!-- Script de partículas -->
     <script>
-        const visitCounter = document.getElementById('visitCounter');
-        let visits = localStorage.getItem('visits') || 0;
-        visits++;
-        localStorage.setItem('visits', visits);
-        visitCounter.textContent = visits;
+        document.body.addEventListener('mousemove', (e) => {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = `${e.pageX}px`;
+            particle.style.top = `${e.pageY}px`;
+
+            const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            particle.style.backgroundColor = color;
+
+            document.body.appendChild(particle);
+
+            setTimeout(() => {
+                particle.remove();
+            }, 1000);
+        });
+
+        document.body.addEventListener('click', () => {
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach(p => {
+                p.style.backgroundColor = '#ff0000'; // Cambia a rojo al hacer clic
+            });
+        });
     </script>
 </body>
 </html>
