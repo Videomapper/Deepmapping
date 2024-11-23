@@ -101,20 +101,20 @@ header {
 
 #gallery h3 {
     font-size: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 65px;
     color: white;
 }
 
 #gallery-images {
     display: none;
-    margin-top: 10px;
+    margin-top: 70px;
     display: grid;
-    grid-template-columns: repeat(2, 3fr);
-    gap: 5px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 50px;
 }
 
 #gallery-images img {
-    width: 100%;
+    width: 50%;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -122,7 +122,7 @@ header {
 }
 
 #gallery-images img:hover {
-    transform: scale(1.05);
+    transform: scale(0.5);
     opacity: 0.9;
 }
 
