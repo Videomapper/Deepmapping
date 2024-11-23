@@ -3,43 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DeepMapping es un estudio creativo especializado en videomapping y experiencias visuales inmersivas en Chiapas.">
     <title>DeepMapping - Mapping en Chiapas</title>
-    <link rel="icon" href="assets/imagenes/favicon.ico">
     <style>
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
             background-color: #000;
             color: #fff;
-            overflow-x: hidden;
+            overflow: hidden;
+        }
+        #render-container {
+            width: 100%;
+            height: 100vh;
         }
         header {
-            position: relative;
             text-align: center;
             margin-top: 20px;
+            z-index: 10;
+            position: relative;
         }
         .logo {
             max-width: 500px;
             width: 80%;
             height: auto;
-            z-index: 10;
-            position: relative;
         }
-        .main-content {
-            text-align: center;
-            padding: 20px;
-            position: relative;
-            z-index: 5;
-        }
-        /* Descripción de quiénes somos */
         .description {
             font-size: 1.5rem;
             font-weight: bold;
             margin: 20px auto;
             max-width: 800px;
         }
-        /* Redes sociales */
         .social-links {
             margin: 30px 0;
             display: flex;
@@ -55,27 +48,6 @@
             transform: scale(1.2);
             filter: brightness(1.5);
         }
-        /* Galería */
-        .gallery {
-            margin: 50px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            max-width: 90%;
-            position: relative;
-            z-index: 5;
-        }
-        .gallery img {
-            width: 100%;
-            border: 2px solid #fff;
-            border-radius: 10px;
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-        .gallery img:hover {
-            transform: scale(1.05);
-            filter: brightness(1.2);
-        }
-        /* Imagen con hipervínculo */
         .corner-image {
             position: fixed;
             bottom: 20px;
@@ -88,94 +60,69 @@
 </head>
 <body>
     <!-- Contenedor de renderizado -->
-    <div id="render-container" style="width: 100%; height: 100vh;"></div>
+    <div id="render-container"></div>
 
-    <!-- Logo -->
+    <!-- Logo y descripción -->
     <header>
         <img src="assets/imagenes/logo.png" alt="DeepMapping Logo" class="logo">
         <p class="description">Somos artistas visuales especializados en videomapping, animación 2D/3D, diseño y experiencias inmersivas en Chiapas y más allá.</p>
-        <!-- Redes sociales -->
         <div class="social-links">
-            <a href="https://www.facebook.com/mappingenchiapas?locale=es_LA" target="_blank" title="Visítanos en Facebook">
+            <a href="https://www.facebook.com/mappingenchiapas?locale=es_LA" target="_blank">
                 <img src="assets/imagenes/facebook.svg" alt="Facebook" class="social-icon">
             </a>
-            <a href="https://www.instagram.com/deepmapping" target="_blank" title="Síguenos en Instagram">
+            <a href="https://www.instagram.com/deepmapping" target="_blank">
                 <img src="assets/imagenes/instagram.svg" alt="Instagram" class="social-icon">
             </a>
-            <a href="https://www.tiktok.com/@deepmapping?_t=8rcdlvE8mNb&_r=1" target="_blank" title="Descúbrenos en TikTok">
+            <a href="https://www.tiktok.com/@deepmapping?_t=8rcdlvE8mNb&_r=1" target="_blank">
                 <img src="assets/imagenes/tiktok.svg" alt="TikTok" class="social-icon">
             </a>
         </div>
     </header>
 
-    <!-- Galería -->
-    <section class="gallery">
-        <h2>Galería de Proyectos</h2>
-        <img src="assets/imagenes/img1.jpg" alt="Proyecto 1">
-        <img src="assets/imagenes/img2.png" alt="Proyecto 2">
-        <img src="assets/imagenes/img3.png" alt="Proyecto 3">
-        <img src="assets/imagenes/img4.png" alt="Proyecto 4">
-        <img src="assets/imagenes/img5.jpg" alt="Proyecto 5">
-    </section>
-
     <!-- Imagen con hipervínculo -->
-    <a href="https://www.facebook.com/housedelascasas?locale=es_LA" target="_blank">       
+    <a href="https://www.facebook.com/housedelascasas?locale=es_LA" target="_blank">
         <img src="assets/imagenes/hdlc.svg" alt="House de las Casas" class="corner-image">
     </a>
 
-    <!-- Cargar Three.js y GLTFLoader -->
+    <!-- Scripts de Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/GLTFLoader.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/FBXLoader.min.js"></script>
     <script>
-        // Configura el renderizador
+        // Configuración inicial
         const container = document.getElementById('render-container');
-        const renderer = new THREE.WebGLRenderer({
-            canvas: document.createElement('canvas'),
-            antialias: true
-        });
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setSize(container.offsetWidth, container.offsetHeight);
         container.appendChild(renderer.domElement);
 
-        // Crea la escena y la cámara
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+        camera.position.set(0, 2, 5);
 
-        // Carga el modelo 3D
-        const loader = new THREE.GLTFLoader();
-        loader.load('assets/modelos/modelo.gltf', (gltf) => {
-            const modelo = gltf.scene;
-            modelo.scale.set(0.1, 0.1, 0.1); // Ajusta el tamaño del modelo
-            scene.add(modelo);
-        }, undefined, function (error) {
-            console.error('Error al cargar el modelo 3D:', error);
-        });
-
-        // Configura la luz
-        const light = new THREE.PointLight(0xffffff, 1, 100);
+        // Luz en la escena
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(5, 5, 5);
         scene.add(light);
 
-        // Detecta el movimiento del cursor
-        container.addEventListener('mousemove', (event) => {
-            const rect = container.getBoundingClientRect();
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
-            const vector = new THREE.Vector3(x, y, 0);
-            vector.unproject(camera);
-            const dir = vector.sub(camera.position).normalize();
-            const distance = -camera.position.z / dir.z;
-            const pos = camera.position.clone().add(dir.multiplyScalar(distance));
-            light.position.copy(pos);
+        const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+        scene.add(ambientLight);
+
+        // Carga del modelo FBX
+        const loader = new THREE.FBXLoader();
+        loader.load('assets/modelos/modelo.fbx', (object) => {
+            object.scale.set(0.01, 0.01, 0.01); // Ajusta la escala del modelo
+            scene.add(object);
+        }, undefined, (error) => {
+            console.error('Error al cargar el modelo FBX:', error);
         });
 
-        // Renderiza la escena
+        // Animación y renderizado
         function animate() {
             requestAnimationFrame(animate);
             renderer.render(scene, camera);
         }
         animate();
 
-        // Ajusta el tamaño del renderizador al cambiar el tamaño de la ventana
+        // Ajuste dinámico del tamaño del canvas
         window.addEventListener('resize', () => {
             renderer.setSize(container.offsetWidth, container.offsetHeight);
             camera.aspect = container.offsetWidth / container.offsetHeight;
