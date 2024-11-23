@@ -2,7 +2,6 @@
 const description = document.getElementById('description');
 
 document.addEventListener('mousemove', function(event) {
-    // Hacer que la descripción aparezca solo cuando el cursor está sobre ella
     if (event.target.closest('#description')) {
         description.classList.add('show');
     } else {
@@ -10,7 +9,7 @@ document.addEventListener('mousemove', function(event) {
     }
 });
 
-// Función para el cursor animado
+// Función de animación de partículas para el cursor
 document.addEventListener('mousemove', (e) => {
     let x = e.clientX;
     let y = e.clientY;
@@ -21,11 +20,11 @@ document.addEventListener('mousemove', (e) => {
         particle.classList.add('cursor-particle');
         particle.style.left = `${x}px`;
         particle.style.top = `${y}px`;
-        particle.style.backgroundColor = `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`;
+        particle.style.backgroundColor = `rgba(255, 255, 255, ${Math.random()})`;
         cursorParticles.appendChild(particle);
         
         setTimeout(() => {
             particle.remove();
-        }, 1500); // Remueve las partículas después de un tiempo
+        }, 1000);
     }
 });
