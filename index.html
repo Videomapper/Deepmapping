@@ -29,28 +29,6 @@
             z-index: -2;
         }
 
-        /* Cursor animado */
-        .custom-cursor {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: rgba(255, 204, 0, 0.8);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            animation: pulse 1s infinite;
-            z-index: 10;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1) translate(-50%, -50%);
-            }
-            50% {
-                transform: scale(1.5) translate(-50%, -50%);
-            }
-        }
-
         /* Fondo negro con transparencia */
         section, header, footer {
             background: rgba(0, 0, 0, 0.3);
@@ -81,79 +59,41 @@
             transform: scale(1.2);
         }
 
-        /* Animación del carrusel (desplazamiento) */
-        .gallery-wrapper {
-            display: flex;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        /* Estilos del contenido */
-        header {
-            text-align: center;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #ffcc00;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.7);
-        }
-
-        footer a {
-            margin: 0 10px;
-        }
-
-        footer img {
-            width: 30px;
-            height: 30px;
-            filter: invert(100%);
-        }
-
-        /* Contador de visitas */
-        #visitCounter {
+        /* Imagen ampliada */
+        .fullscreen {
             position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            z-index: 1000;
+            border: 2px solid white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s ease-in-out;
+            cursor: pointer;
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Video de fondo -->
     <video id="videoBackground" autoplay muted loop>
-        <source src="assets/video/page.mp4" type="video/mp4">
+        <source src="assets/videos/page.mp4" type="video/mp4">
         Tu navegador no soporta videos HTML5.
     </video>
 
-    <!-- Cursor personalizado -->
-    <div class="custom-cursor" id="customCursor"></div>
-
     <!-- Contenido principal -->
     <header>
-        <img src="assets/imagenes/logo.png" alt="Deepmapping Logo" class="logo">
         <h1>Deepmapping</h1>
         <nav>
             <a href="#nosotros">Nosotros</a>
@@ -162,82 +102,38 @@
         </nav>
     </header>
 
-    <section id="nosotros">
-        <h2>Nosotros</h2>
-        <p>Deepmapping es un colectivo de artistas visuales especializados en video mapping, interactivos y diseño digital. Transformamos espacios en experiencias inmersivas.</p>
-    </section>
-
     <section id="galeria">
         <h2>Galería</h2>
         <div class="gallery">
             <div class="gallery-wrapper">
                 <img src="assets/imagenes/img1.jpg" alt="Imagen 1">
-                <img src="assets/imagenes/img2.jpg" alt="Imagen 2">
-                <img src="assets/imagenes/img3.jpg" alt="Imagen 3">
-                <img src="assets/imagenes/img4.jpg" alt="Imagen 4">
+                <img src="assets/imagenes/img2.png" alt="Imagen 2">
+                <img src="assets/imagenes/img3.png" alt="Imagen 3">
+                <img src="assets/imagenes/img4.png" alt="Imagen 4">
                 <img src="assets/imagenes/img5.jpg" alt="Imagen 5">
             </div>
         </div>
     </section>
 
-    <section id="contacto">
-        <h2>Contacto</h2>
-        <form action="mailto:info@deepmapping.com" method="post" enctype="text/plain">
-            <input type="text" name="name" placeholder="Tu nombre" required><br>
-            <input type="email" name="email" placeholder="Tu email" required><br>
-            <textarea name="message" placeholder="Tu mensaje"></textarea><br>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
-
-    <footer>
-        <a href="https://www.facebook.com/mappingenchiapas?locale=es_LA">
-            <img src="assets/imagenes/facebook.svg" alt="Facebook">
-        </a>
-        <a href="https://www.instagram.com/deepmapping/">
-            <img src="assets/imagenes/instagram.svg" alt="Instagram">
-        </a>
-        <a href="https://www.tiktok.com/@deepmapping?_t=8rcdlvE8mNb&_r=1">
-            <img src="assets/imagenes/tiktok.svg" alt="TikTok">
-        </a>
-    </footer>
-
-    <!-- Contador de visitas -->
-    <div id="visitCounter">Visitas: 0</div>
-
     <script>
-        // Animación del cursor
-        const customCursor = document.getElementById("customCursor");
+        // Funcionalidad de ampliación
+        const galleryImages = document.querySelectorAll('.gallery img');
 
-        document.addEventListener("mousemove", (e) => {
-            customCursor.style.left = `${e.clientX}px`;
-            customCursor.style.top = `${e.clientY}px`;
+        galleryImages.forEach((img) => {
+            img.addEventListener('click', () => {
+                if (img.classList.contains('fullscreen')) {
+                    // Si la imagen ya está ampliada, restaurar al carrusel
+                    img.classList.remove('fullscreen');
+                    img.style.width = '80px';
+                    img.style.height = '80px';
+                } else {
+                    // Ampliar la imagen
+                    img.classList.add('fullscreen');
+                    img.style.width = 'auto';
+                    img.style.height = 'auto';
+                }
+            });
         });
-
-        // Carrusel de la galería: desplazamiento automático al mover el cursor
-        const galleryWrapper = document.querySelector(".gallery-wrapper");
-        const gallery = document.querySelector(".gallery");
-
-        gallery.addEventListener("mousemove", (e) => {
-            const offset = e.clientX - gallery.offsetLeft;
-            const width = gallery.offsetWidth;
-            const maxScroll = galleryWrapper.offsetWidth - gallery.offsetWidth;
-            const scrollAmount = (offset / width) * maxScroll;
-            galleryWrapper.style.transform = `translateX(-${scrollAmount}px)`;
-        });
-
-        // Contador de visitas
-        const visitCounter = document.getElementById("visitCounter");
-        let visits = localStorage.getItem("visitCount");
-
-        if (!visits) {
-            visits = 1;
-        } else {
-            visits = parseInt(visits) + 1;
-        }
-
-        localStorage.setItem("visitCount", visits);
-        visitCounter.textContent = `Visitas: ${visits}`;
     </script>
 </body>
 </html>
