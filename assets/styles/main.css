@@ -81,7 +81,7 @@ header {
     font-weight: bold;
     line-height: 1.5;
     color: white;
-    max-width: 800px;
+    max-width: 80px;
     text-align: center;
 }
 
@@ -93,7 +93,7 @@ header {
 /* Galería de imágenes */
 #gallery {
     position: absolute;
-    bottom: 10%;
+    bottom: 100%;
     left: 5%;
     z-index: 99;
     text-align: center;
@@ -110,7 +110,7 @@ header {
     margin-top: 70px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 50px;
+    gap: 15px;
 }
 
 #gallery-images img {
