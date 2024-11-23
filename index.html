@@ -3,14 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DeepMapping - Videomapping y animación 2D/3D en Chiapas. Creación de experiencias visuales y generativas.">
-    <meta name="keywords" content="videomapping, animación, Chiapas, experiencias visuales, arte digital, generativo">
-    <meta name="author" content="DeepMapping">
-    <meta property="og:title" content="DeepMapping">
-    <meta property="og:description" content="Experiencias visuales inmersivas de videomapping y arte digital en Chiapas.">
-    <meta property="og:image" content="assets/imagenes/logo.png">
-    <meta property="og:url" content="https://www.deepmappingchiapas.com">
-    <title>DeepMapping - Mapping en Chiapas</title>
+    <title>DeepMapping</title>
     <link rel="stylesheet" href="assets/styles/main.css">
     <script src="assets/scripts/particles.js" defer></script>
     <script src="assets/scripts/gallery.js" defer></script>
@@ -18,63 +11,39 @@
 <body>
 
     <!-- Video de fondo -->
-    <div class="video-bg">
-        <video autoplay muted loop playsinline>
-            <source src="assets/video/page.mp4" type="video/mp4">
+    <div class="video-container">
+        <video autoplay muted loop id="background-video">
+            <source src="assets/videos/page.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
         </video>
     </div>
 
-    <!-- Header con logo -->
-    <header>
-        <a href="#home">
-            <img src="assets/imagenes/logo.png" alt="DeepMapping Logo" class="logo">
-        </a>
-    </header>
+    <!-- Logo centrado en la parte superior -->
+    <a href="index.html" class="logo-container">
+        <img src="assets/imagenes/hdlc.svg" alt="DeepMapping Logo" class="logo">
+    </a>
 
-    <!-- Descripción de nosotros -->
-    <div class="description">
-        <p>Somos artistas visuales especializados en videomapping, animación 2D/3D, diseño y experiencias inmersivas en Chiapas y más allá.</p>
-    </div>
-
-    <!-- Galería de imágenes -->
-    <section class="gallery">
-        <h2>Galería de Proyectos</h2>
-        <div class="gallery-images">
-            <img src="assets/imagenes/img1.jpg" alt="Proyecto 1">
-            <img src="assets/imagenes/img2.png" alt="Proyecto 2">
-            <img src="assets/imagenes/img3.png" alt="Proyecto 3">
-            <img src="assets/imagenes/img4.png" alt="Proyecto 4">
-            <img src="assets/imagenes/img5.jpg" alt="Proyecto 5">
-        </div>
-    </section>
-
-    <!-- Imagen con redes sociales -->
-    <div class="fixed-corner">
-        <a href="https://www.facebook.com/housedelascasas?locale=es_LA" target="_blank">
-            <img src="assets/imagenes/hdlc.svg" alt="House de las Casas" class="corner-image">
-        </a>
-        <div class="social-links-vertical">
-            <a href="https://www.facebook.com/mappingenchiapas?locale=es_LA" target="_blank">
-                <img src="assets/imagenes/facebook.svg" alt="Facebook" class="social-icon">
-            </a>
-            <a href="https://www.instagram.com/deepmapping.chiapas/profilecard/?igsh=eXhzNTJmb2szM20w" target="_blank">
-                <img src="assets/imagenes/instagram.svg" alt="Instagram" class="social-icon">
-            </a>
-            <a href="https://www.tiktok.com/@deepmapping?_t=8rcdlvE8mNb&_r=1" target="_blank">
-                <img src="assets/imagenes/tiktok.svg" alt="TikTok" class="social-icon">
-            </a>
+    <!-- Galería de Imágenes -->
+    <div class="gallery-container">
+        <h2 class="gallery-title">Galería de Imágenes</h2>
+        <div class="gallery">
+            <img src="assets/imagenes/img1.jpg" alt="Imagen 1" class="gallery-image">
+            <img src="assets/imagenes/img2.jpg" alt="Imagen 2" class="gallery-image">
+            <img src="assets/imagenes/img3.jpg" alt="Imagen 3" class="gallery-image">
         </div>
     </div>
 
-    <!-- Animación del cursor -->
-    <canvas id="particleCanvas"></canvas>
+    <!-- Descripción: "Quienes Somos" -->
+    <div class="description-container">
+        <p class="description-text">
+            <span>Quienes Somos</span> - Descripción sobre el proyecto DeepMapping. Nuestro equipo de expertos en videomapping, animación y tecnología trabajan para crear experiencias visuales innovadoras que conecten con el público de una manera única. ¡Bienvenidos a nuestro mundo!
+        </p>
+    </div>
 
-    <!-- Footer con enlaces legales -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 DeepMapping - Todos los derechos reservados</p>
-            <a href="politica_privacidad.html">Política de privacidad</a> | <a href="terminos_servicio.html">Términos de servicio</a> | <a href="contacto.html">Contacto</a>
-        </div>
-    </footer>
+    <!-- Derechos Reservados, Política y Términos -->
+    <div class="footer">
+        <p>© 2024 DeepMapping. Todos los derechos reservados. | <a href="politica_privacidad.html">Política de Privacidad</a> | <a href="terminos_servicio.html">Términos de Servicio</a></p>
+    </div>
+
 </body>
 </html>
