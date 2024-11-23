@@ -1,14 +1,13 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const gallery = document.querySelector(".gallery");
-    const images = document.querySelector(".gallery-images");
-
-    // Mostrar las imágenes al pasar el cursor sobre la galería
-    gallery.addEventListener("mouseenter", () => {
-        images.style.display = "flex";
+document.querySelector('.gallery-title').addEventListener('mouseover', function() {
+    let images = document.querySelectorAll('.gallery-image');
+    images.forEach(function(image) {
+        image.style.opacity = 1;
     });
+});
 
-    // Ocultar las imágenes al mover el cursor fuera de la galería
-    gallery.addEventListener("mouseleave", () => {
-        images.style.display = "none";
+document.querySelector('.gallery-title').addEventListener('mouseout', function() {
+    let images = document.querySelectorAll('.gallery-image');
+    images.forEach(function(image) {
+        image.style.opacity = 0;
     });
 });
