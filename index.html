@@ -10,14 +10,14 @@
     <script src="assets/scripts/main.js" defer></script>
 </head>
 <body>
-    <!-- Header con el logo del proyecto -->
+    <!-- Header con el logo -->
     <header>
         <div id="logo">
             <img src="assets/imagenes/logo.png" alt="DeepMapping Logo">
         </div>
     </header>
 
-    <!-- Sección de redes sociales -->
+    <!-- Redes sociales -->
     <div id="social-media">
         <a href="https://www.facebook.com/housedelascasas" target="_blank">
             <img src="assets/imagenes/hdlc.svg" alt="HDLC Logo" class="social-icon">
@@ -33,27 +33,32 @@
         </a>
     </div>
 
-    <!-- Sección de video de fondo -->
+    <!-- Video de fondo -->
     <div id="video-container">
         <video id="background-video" autoplay loop muted>
-            <source src="assets/video/page.mp4" type="video/mp4">
+            <source src="assets/videos/page.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 
-    <!-- Descripción interactiva que aparece al pasar el cursor -->
+    <!-- Descripción interactiva -->
     <div id="description">
         <p>Somos un equipo creativo que se especializa en la producción de experiencias visuales interactivas...</p>
     </div>
 
-    <!-- Enlace a la página de la Galería -->
+    <!-- Enlace a la galería -->
     <div id="gallery-link">
         <a href="gallery.html">Ver Galería de Imágenes</a>
     </div>
 
-    <!-- Footer con derechos reservados -->
+    <!-- Footer fijo con enlaces a otras páginas -->
     <footer>
-        <p>&copy; 2024 DeepMapping. Todos los derechos reservados | <a href="/politicas">Políticas de privacidad</a> | <a href="/terminos">Términos y condiciones</a></p>
+        <div class="footer-links">
+            <a href="politica_privacidad.html">Política de Privacidad</a> |
+            <a href="terminos_servicio.html">Términos y Condiciones</a> |
+            <a href="contacto.html">Contáctanos</a>
+        </div>
+        <p>&copy; 2024 DeepMapping. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
