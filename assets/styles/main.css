@@ -70,7 +70,7 @@ header {
 /* Descripción interactiva */
 #description {
     position: absolute;
-    top: 80%;
+    top: 180%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -91,7 +91,7 @@ body:hover #description {
 
 /* Galería */
 #gallery-link {
-    position: absolute;
+    position: fixed;
     bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
