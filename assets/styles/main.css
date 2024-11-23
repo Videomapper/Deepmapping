@@ -11,6 +11,7 @@ body {
     background-color: #000;
     color: white;
     overflow-x: hidden;
+    position: relative;
 }
 
 /* Header con logo */
@@ -20,22 +21,21 @@ header {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px 0;
     text-align: center;
-    z-index: 10;
 }
 
 #logo img {
-    width: 200px;  /* Ajusta el tamaño del logo según lo necesites */
+    width: 200px;
     height: auto;
 }
 
-/* Estilo del video de fondo */
+/* Video de fondo */
 #video-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Coloca el video detrás del contenido */
+    z-index: -1;
     overflow: hidden;
 }
 
@@ -45,17 +45,16 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;  /* Asegura que el video cubra toda la pantalla */
+    object-fit: cover;
 }
 
-/* Sección de redes sociales */
+/* Redes sociales */
 #social-media {
     position: fixed;
-    bottom: 20px;
+    bottom: 80px; /* Para dejar espacio al footer */
     left: 20px;
     display: flex;
     gap: 15px;
-    z-index: 100;
 }
 
 .social-icon {
@@ -75,7 +74,7 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    display: none; /* Inicialmente oculto */
+    display: none; /* Oculto por defecto */
 }
 
 #description p {
@@ -83,23 +82,20 @@ header {
     font-weight: bold;
     line-height: 1.5;
     color: white;
-    max-width: 80px;
-    text-align: center;
+    max-width: 800px;
 }
 
-/* Mostrar la descripción al pasar el cursor */
-#description.show {
+body:hover #description {
     display: block;
 }
 
-/* Estilo del enlace a la galería */
+/* Galería */
 #gallery-link {
     position: absolute;
-    bottom: 10%;
+    bottom: 150px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
-    color: white;
 }
 
 #gallery-link a {
@@ -116,52 +112,23 @@ header {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Página de Galería */
-#gallery {
-    margin: 20px;
-    text-align: center;
-}
-
-#gallery h3 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-#gallery-images {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-#gallery-images img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-}
-
-#gallery-images img:hover {
-    transform: scale(1.05);
-}
-
-/* Estilo del pie de página */
+/* Footer fijo */
 footer {
-    position: relative;
+    position: fixed;
     bottom: 0;
     width: 100%;
     background-color: #333;
-    padding: 15px 0;
-    text-align: center;
     color: white;
-    z-index: 100;
+    padding: 10px 0;
+    text-align: center;
 }
 
-footer a {
+.footer-links a {
     color: white;
     text-decoration: none;
+    margin: 0 10px;
 }
 
-footer a:hover {
+.footer-links a:hover {
     text-decoration: underline;
 }
