@@ -12,10 +12,9 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow-y: scroll; /* Asegura la barra de desplazamiento */
+            overflow-y: scroll;
             font-family: Arial, sans-serif;
             color: white;
-            cursor: none; /* Oculta el cursor por defecto */
         }
 
         /* Fondo de video */
@@ -37,7 +36,52 @@
             margin-bottom: 30px;
         }
 
-        /* Estilos del carrusel */
+        /* Cursor animado */
+        #customCursor {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+        }
+
+        /* Logo */
+        #logo {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        /* Redes sociales */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        /* Carrusel */
         .gallery {
             display: flex;
             justify-content: center;
@@ -83,17 +127,37 @@
                 opacity: 1;
             }
         }
+
+        /* Icono fijo en la esquina inferior derecha */
+        .fixed-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: auto;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+
+        .fixed-icon:hover {
+            transform: scale(1.2);
+        }
     </style>
 </head>
 <body>
+    <!-- Cursor personalizado -->
+    <div id="customCursor"></div>
+
     <!-- Video de fondo -->
     <video id="videoBackground" autoplay muted loop>
         <source src="assets/video/page.mp4" type="video/mp4">
         Tu navegador no soporta videos HTML5.
     </video>
 
-    <!-- Contenido principal -->
+    <!-- Encabezado -->
     <header>
+        <img id="logo" src="assets/imagenes/logo.png" alt="Deepmapping Logo">
         <h1>Deepmapping</h1>
         <nav>
             <a href="#nosotros">Nosotros</a>
@@ -102,36 +166,65 @@
         </nav>
     </header>
 
+    <!-- Redes sociales -->
+    <div class="social-icons">
+        <a href="#"><img src="assets/imagenes/facebook.svg" alt="Facebook"></a>
+        <a href="#"><img src="assets/imagenes/instagram.svg" alt="Instagram"></a>
+    </div>
+
+    <!-- Galería -->
     <section id="galeria">
         <h2>Galería</h2>
         <div class="gallery">
-            <div class="gallery-wrapper">
-                <img src="assets/imagenes/img1.jpg" alt="Imagen 1">
-                <img src="assets/imagenes/img2.png" alt="Imagen 2">
-                <img src="assets/imagenes/img3.png" alt="Imagen 3">
-                <img src="assets/imagenes/img4.png" alt="Imagen 4">
-                <img src="assets/imagenes/img5.jpg" alt="Imagen 5">
-            </div>
+            <img src="assets/imagenes/img1.jpg" alt="Imagen 1">
+            <img src="assets/imagenes/img2.png" alt="Imagen 2">
+            <img src="assets/imagenes/img3.png" alt="Imagen 3">
+            <img src="assets/imagenes/img4.png" alt="Imagen 4">
+            <img src="assets/imagenes/img5.jpg" alt="Imagen 5">
         </div>
     </section>
 
-    <script>
-        // Funcionalidad de ampliación
-        const galleryImages = document.querySelectorAll('.gallery img');
+    <!-- Contacto -->
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <form>
+            <input type="text" placeholder="Nombre" required>
+            <input type="email" placeholder="Correo" required>
+            <textarea placeholder="Mensaje"></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
 
+    <!-- Contador de visitas -->
+    <footer>
+        <p>Visitas: <span id="visitCounter">0</span></p>
+    </footer>
+
+    <!-- Icono fijo en la esquina inferior derecha -->
+    <a href="https://www.facebook.com/" target="_blank">
+        <img class="fixed-icon" src="assets/imagenes/hdlc.png" alt="HDLC">
+    </a>
+
+    <script>
+        // Animación del cursor
+        const cursor = document.getElementById('customCursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.pageX}px`;
+            cursor.style.top = `${e.pageY}px`;
+        });
+
+        // Funcionalidad del contador de visitas
+        const visitCounter = document.getElementById('visitCounter');
+        let visits = localStorage.getItem('visits') || 0;
+        visits++;
+        localStorage.setItem('visits', visits);
+        visitCounter.textContent = visits;
+
+        // Ampliación de imágenes
+        const galleryImages = document.querySelectorAll('.gallery img');
         galleryImages.forEach((img) => {
             img.addEventListener('click', () => {
-                if (img.classList.contains('fullscreen')) {
-                    // Si la imagen ya está ampliada, restaurar al carrusel
-                    img.classList.remove('fullscreen');
-                    img.style.width = '80px';
-                    img.style.height = '80px';
-                } else {
-                    // Ampliar la imagen
-                    img.classList.add('fullscreen');
-                    img.style.width = 'auto';
-                    img.style.height = 'auto';
-                }
+                img.classList.toggle('fullscreen');
             });
         });
     </script>
