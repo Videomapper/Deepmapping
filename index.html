@@ -25,7 +25,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: -2;
+            z-index: -1;
         }
 
         /* Logo principal */
@@ -34,6 +34,7 @@
             margin: 20px auto;
             width: 150px;
             height: auto;
+            z-index: 1;
         }
 
         /* Secciones principales */
@@ -162,6 +163,38 @@
             z-index: 1000;
             transition: background-color 0.2s ease;
         }
+
+        /* Área de contacto */
+        #contact {
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+        }
+
+        #contact form {
+            margin-top: 20px;
+        }
+
+        #contact input, #contact textarea, #contact button {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 1em;
+        }
+
+        #contact button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #contact button:hover {
+            background: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -195,10 +228,21 @@
         </div>
     </section>
 
+    <!-- Área de contacto -->
+    <section id="contact">
+        <h2>Contacto</h2>
+        <form>
+            <input type="text" placeholder="Nombre" required>
+            <input type="email" placeholder="Correo electrónico" required>
+            <textarea placeholder="Tu mensaje" rows="4" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
     <!-- Redes sociales -->
     <div class="socials">
         <a href="https://www.facebook.com/" target="_blank"><img src="assets/imagenes/facebook.svg" alt="Facebook"></a>
-        <a href="https://www.instagram.com/deepmapping.chiapas/profilecard/?igsh=eXhzNTJmb2szM20w" target="_blank"><img src="assets/imagenes/instagram.svg" alt="Instagram"></a>
+        <a href="https://www.instagram.com/" target="_blank"><img src="assets/imagenes/instagram.svg" alt="Instagram"></a>
     </div>
 
     <!-- Contador de visitas -->
