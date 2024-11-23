@@ -156,7 +156,7 @@
         const container = document.getElementById('canvasContainer');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
 
         renderer.setSize(window.innerWidth, window.innerHeight);
         container.appendChild(renderer.domElement);
@@ -165,6 +165,10 @@
         const light = new THREE.PointLight(0xffffff, 1, 100);
         light.position.set(10, 10, 10);
         scene.add(light);
+
+        // Ambient Light
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
 
         // Load OBJ and MTL
         const mtlLoader = new THREE.MTLLoader();
@@ -175,9 +179,12 @@
             objLoader.setMaterials(materials);
             objLoader.setPath('assets/modelos/');
             objLoader.load('proyecto.obj', (object) => {
-                object.scale.set(1, 1, 1);
-                object.position.set(0, -2, 0);
+                object.scale.set(0.5, 0.5, 0.5); // Ajustar escala
+                object.position.set(0, -1, 0);   // Centrar modelo
                 scene.add(object);
+                console.log("Modelo cargado correctamente.");
+            }, undefined, (error) => {
+                console.error("Error al cargar el modelo:", error);
             });
         });
 
