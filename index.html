@@ -143,7 +143,7 @@
 
         // Carga el modelo 3D
         const loader = new THREE.GLTFLoader();
-        loader.load('assets/modelos/modelo.glb', (gltf) => {
+        loader.load('assets/modelos/modelo.gltf', (gltf) => {
             const modelo = gltf.scene;
             modelo.scale.set(0.5, 0.5, 0.5); // Ajusta el tamaño del modelo
             scene.add(modelo);
