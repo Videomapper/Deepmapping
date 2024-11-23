@@ -81,6 +81,48 @@
             transform: scale(1.05);
             filter: brightness(1.2);
         }
+
+        /* Imagen en la esquina inferior derecha */
+        .corner-image {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
+            height: auto;
+            z-index: 10;
+        }
+
+        /* Estilo del formulario de contacto */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 50px 0;
+            z-index: 5;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #333;
+            color: #fff;
+        }
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #00ff00;
+            border: none;
+            border-radius: 5px;
+            color: #000;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #007700;
+        }
     </style>
 </head>
 <body>
@@ -113,13 +155,28 @@
         </div>
     </div>
 
+    <!-- Formulario de contacto -->
+    <div class="contact-form">
+        <h2>Contacto</h2>
+        <form action="#" method="post">
+            <input type="text" name="name" placeholder="Tu Nombre" required>
+            <input type="email" name="email" placeholder="Tu Correo" required>
+            <textarea name="message" rows="4" placeholder="Tu Mensaje" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
     <!-- Galería -->
     <section class="gallery">
         <h2>Galería de Proyectos</h2>
         <img src="assets/imagenes/img1.jpg" alt="Proyecto 1">
         <img src="assets/imagenes/img2.png" alt="Proyecto 2">
         <img src="assets/imagenes/img3.png" alt="Proyecto 3">
-        <img src="assets/imagenes/img4.jpg" alt="Proyecto 4">
+        <img src="assets/imagenes/img4.png" alt="Proyecto 4">
+        <img src="assets/imagenes/img5.jpg" alt="Proyecto 5">
     </section>
+
+    <!-- Imagen en la esquina inferior derecha -->
+    <img src="assets/imagenes/hdlc.svg" alt="HDLC" class="corner-image">
 </body>
 </html>
