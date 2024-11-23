@@ -1,154 +1,135 @@
 /* Estilos generales */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: Arial, sans-serif;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
 }
 
-/* Contenedor del video de fondo */
-.video-container {
-    position: absolute;
+header {
+    position: relative;
+    text-align: center;
+}
+
+.logo {
+    max-width: 500px;
+    width: 80%;
+    height: auto;
+    z-index: 10;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Video de fondo */
+.video-bg video {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    object-fit: cover;
     z-index: -1;
 }
 
-#background-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.description {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 120px auto 20px auto;
+    max-width: 800px;
+    text-align: center;
+    display: none; /* Inicialmente oculta */
 }
 
-/* Header: Logo centrado y fijo */
-.header {
+.social-links {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
     position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 20px 0;
-    z-index: 10;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
 }
 
-.logo-container {
-    display: block;
-    width: 200px;
+.social-icon {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.logo {
-    width: 100%;
-    height: auto;
+.social-icon:hover {
+    transform: scale(1.2);
+    filter: brightness(1.5);
 }
 
 /* Galería de Imágenes */
-.gallery-container {
-    position: absolute;
-    bottom: 50px;
-    left: 20px;
-    z-index: 5;
-    text-align: center;
-}
-
-.gallery-title {
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-}
-
 .gallery {
-    display: none;
-    margin-top: 20px;
-    text-align: left;
+    position: fixed;
+    bottom: 10%;
+    left: 10%;
+    z-index: 10;
+    display: none; /* Inicialmente oculta */
+}
+
+.gallery h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.gallery-images {
+    display: flex;
+    gap: 10px;
 }
 
 .gallery-image {
     width: 100px;
     height: auto;
-    margin: 10px;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-.gallery-container:hover .gallery {
-    display: block;
-}
-
-.gallery-container:hover .gallery-image {
-    opacity: 1;
-}
-
-/* Descripción: "Quienes Somos" */
-.description-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 5;
-    visibility: hidden;
-}
-
-.description-text {
-    font-weight: bold;
-    font-size: 24px;
-    color: white;
-    max-width: 80%;
-    line-height: 1.6;
-    text-align: justify;
-}
-
-.description-container:hover {
-    visibility: visible;
-}
-
-/* Footer: Derechos, Política y Términos */
+/* Footer */
 .footer {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 14px;
-    color: gray;
     text-align: center;
-    z-index: 10;
+    font-size: 0.8rem;
+    color: #aaa;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
 }
 
 .footer a {
-    color: gray;
+    color: #aaa;
     text-decoration: none;
 }
 
 .footer a:hover {
-    text-decoration: underline;
+    color: #fff;
 }
 
-/* Efecto para el cursor animado */
-.cursor {
+/* Partículas */
+.particles-container {
     position: absolute;
-    border: 2px solid #fff;
-    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
-    width: 20px;
-    height: 20px;
-    z-index: 100;
+    z-index: 999;
 }
 
 .cursor-particle {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
     width: 10px;
     height: 10px;
-    pointer-events: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
     animation: particle-move 1.5s ease-in-out infinite;
 }
 
