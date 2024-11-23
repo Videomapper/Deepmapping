@@ -3,71 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeepMapping - Mapping en Chiapas</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DeepMapping</title>
     <link rel="stylesheet" href="assets/styles/main.css">
-</head>
-<body>
-    <!-- Logo -->
-    <header class="header">
-        <a href="#" class="logo-link">
-            <img src="assets/imagenes/logo.png" alt="DeepMapping Logo" class="logo">
-        </a>
-        <!-- Video de fondo -->
-        <div class="video-bg">
-            <video autoplay muted loop playsinline>
-                <source src="assets/video/page.mp4" type="video/mp4">
-            </video>
-        </div>
-    </header>
-
-    <!-- Descripción de la empresa -->
-    <section class="description" id="description">
-        <p>Somos artistas visuales especializados en videomapping, animación 2D/3D, diseño y experiencias inmersivas en Chiapas y más allá.</p>
-    </section>
-
-    <!-- Redes sociales -->
-    <div class="social-links">
-        <a href="https://www.facebook.com/mappingenchiapas?locale=es_LA" target="_blank">
-            <img src="assets/imagenes/facebook.svg" alt="Facebook" class="social-icon">
-        </a>
-        <a href="https://www.instagram.com/deepmapping.chiapas/profilecard/?igsh=eXhzNTJmb2szM20w" target="_blank">
-            <img src="assets/imagenes/instagram.svg" alt="Instagram" class="social-icon">
-        </a>
-        <a href="https://www.tiktok.com/@deepmapping?_t=8rcdlvE8mNb&_r=1" target="_blank">
-            <img src="assets/imagenes/tiktok.svg" alt="TikTok" class="social-icon">
-        </a>
-    </div>
-
-    <!-- Galería de Imágenes -->
-    <section class="gallery" id="gallery">
-        <h2>Galería de Proyectos</h2>
-        <div class="gallery-images">
-            <img src="assets/imagenes/img1.jpg" alt="Proyecto 1" class="gallery-image">
-            <img src="assets/imagenes/img2.png" alt="Proyecto 2" class="gallery-image">
-            <img src="assets/imagenes/img3.png" alt="Proyecto 3" class="gallery-image">
-            <img src="assets/imagenes/img4.png" alt="Proyecto 4" class="gallery-image">
-            <img src="assets/imagenes/img5.jpg" alt="Proyecto 5" class="gallery-image">
-        </div>
-    </section>
-
-    <!-- Imagen con hipervínculo -->
-    <a href="https://www.facebook.com/housedelascasas?locale=es_LA" target="_blank">
-        <img src="assets/imagenes/hdlc.svg" alt="House de las Casas" class="corner-image">
-    </a>
-
-    <!-- Derechos reservados y políticas -->
-    <footer class="footer">
-        <p>&copy; 2024 DeepMapping. Todos los derechos reservados.</p>
-        <p><a href="#">Política de privacidad</a> | <a href="#">Términos y condiciones</a></p>
-    </footer>
-
-    <!-- Partículas -->
-    <div class="particles-container"></div>
-
-    <!-- Scripts -->
     <script src="assets/scripts/particles.js" defer></script>
     <script src="assets/scripts/gallery.js" defer></script>
     <script src="assets/scripts/main.js" defer></script>
+</head>
+<body>
+    <!-- Logo de HDLC en la parte inferior izquierda -->
+    <a href="https://www.facebook.com" target="_blank" id="hdlc-logo">
+        <img src="assets/imagenes/hdlc.svg" alt="HDLC Logo" class="logo-hdlc">
+    </a>
 
+    <!-- Sección principal (video, descripción, etc.) -->
+    <div id="video-container">
+        <video id="background-video" autoplay loop muted>
+            <source src="assets/videos/page.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Descripción (aparece al pasar el cursor) -->
+    <div id="description">
+        <p>Somos un equipo creativo que se especializa en la producción de experiencias visuales interactivas...</p>
+    </div>
+
+    <!-- Galería de imágenes (aparece al pasar el cursor) -->
+    <div class="gallery" id="gallery">
+        <h3>Galería de Imágenes</h3>
+        <div class="gallery-images" id="gallery-images">
+            <!-- Añadir imágenes aquí -->
+            <img src="assets/imagenes/image1.jpg" alt="Imagen 1">
+            <img src="assets/imagenes/image2.jpg" alt="Imagen 2">
+            <img src="assets/imagenes/image3.jpg" alt="Imagen 3">
+        </div>
+    </div>
+
+    <!-- Footer con derechos reservados, políticas, etc. -->
+    <footer>
+        <p>&copy; 2024 DeepMapping. Todos los derechos reservados | <a href="/politicas">Políticas de privacidad</a> | <a href="/terminos">Términos y condiciones</a></p>
+    </footer>
 </body>
 </html>
