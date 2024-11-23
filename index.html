@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeepMapping - Mapping en Chiapas</title>
     <link rel="stylesheet" href="assets/styles/main.css">
+    <script src="assets/scripts/particles.js" defer></script>
 </head>
 <body>
     <!-- Video de fondo -->
     <div class="video-bg">
         <video autoplay muted loop playsinline>
             <source src="assets/video/page.mp4" type="video/mp4">
-            Tu navegador no soporta la reproducción de videos.
         </video>
     </div>
 
@@ -19,8 +19,26 @@
     <header>
         <img src="assets/imagenes/logo.png" alt="DeepMapping Logo" class="logo">
         <p class="description">Somos artistas visuales especializados en videomapping, animación 2D/3D, diseño y experiencias inmersivas en Chiapas y más allá.</p>
-        <!-- Redes sociales -->
-        <div class="social-links">
+    </header>
+
+    <!-- Galería -->
+    <section class="gallery">
+        <h2>Galería de Proyectos</h2>
+        <div class="gallery-images">
+            <img src="assets/imagenes/img1.jpg" alt="Proyecto 1">
+            <img src="assets/imagenes/img2.png" alt="Proyecto 2">
+            <img src="assets/imagenes/img3.png" alt="Proyecto 3">
+            <img src="assets/imagenes/img4.png" alt="Proyecto 4">
+            <img src="assets/imagenes/img5.jpg" alt="Proyecto 5">
+        </div>
+    </section>
+
+    <!-- Imagen con hipervínculo y redes sociales -->
+    <div class="fixed-corner">
+        <a href="https://www.facebook.com/housedelascasas?locale=es_LA" target="_blank">
+            <img src="assets/imagenes/hdlc.svg" alt="House de las Casas" class="corner-image">
+        </a>
+        <div class="social-links-vertical">
             <a href="https://www.facebook.com/mappingenchiapas?locale=es_LA" target="_blank">
                 <img src="assets/imagenes/facebook.svg" alt="Facebook" class="social-icon">
             </a>
@@ -31,26 +49,9 @@
                 <img src="assets/imagenes/tiktok.svg" alt="TikTok" class="social-icon">
             </a>
         </div>
-    </header>
-
-    <!-- Galería -->
-    <section class="gallery">
-        <h2>Galería de Proyectos</h2>
-        <img src="assets/imagenes/img1.jpg" alt="Proyecto 1">
-        <img src="assets/imagenes/img2.png" alt="Proyecto 2">
-        <img src="assets/imagenes/img3.png" alt="Proyecto 3">
-        <img src="assets/imagenes/img4.png" alt="Proyecto 4">
-        <img src="assets/imagenes/img5.jpg" alt="Proyecto 5">
-    </section>
-
-    <!-- Imagen con hipervínculo -->
-    <a href="https://www.facebook.com/housedelascasas?locale=es_LA" target="_blank">
-        <img src="assets/imagenes/hdlc.svg" alt="House de las Casas" class="corner-image">
-    </a>
+    </div>
 
     <!-- Animación del cursor -->
     <canvas id="particleCanvas"></canvas>
-
-    <script src="assets/scripts/particles.js"></script>
 </body>
 </html>
