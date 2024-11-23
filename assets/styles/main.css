@@ -1,10 +1,32 @@
-/* Estilo general */
-body {
+/* Reset general */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo general */
+body {
     font-family: Arial, sans-serif;
     background-color: #000;
     color: white;
+    overflow-x: hidden;
+}
+
+/* Header con logo */
+header {
+    position: relative;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+    text-align: center;
+    z-index: 10;
+}
+
+#logo h1 {
+    font-size: 36px;
+    color: white;
+    font-weight: bold;
 }
 
 /* Estilo del video de fondo */
@@ -31,7 +53,7 @@ body {
     left: 20px;
     display: flex;
     gap: 15px;
-    z-index: 999;
+    z-index: 100;
 }
 
 .social-icon {
@@ -55,29 +77,32 @@ body {
 }
 
 #description p {
-    color: white;
-    font-weight: bold;
     font-size: 24px;
+    font-weight: bold;
     line-height: 1.5;
-    text-align: justify;
+    color: white;
+    max-width: 800px;
+    text-align: center;
 }
 
-/* Mostrar descripción al pasar el cursor */
+/* Mostrar la descripción al pasar el cursor */
 #description.show {
     display: block;
 }
 
-/* Estilo de la galería */
+/* Galería de imágenes */
 #gallery {
     position: absolute;
     bottom: 10%;
     left: 5%;
-    z-index: 999;
+    z-index: 99;
+    text-align: center;
 }
 
 #gallery h3 {
-    color: white;
     font-size: 24px;
+    margin-bottom: 10px;
+    color: white;
 }
 
 #gallery-images {
@@ -85,34 +110,43 @@ body {
     margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 15px;
 }
 
 #gallery-images img {
     width: 100%;
     height: auto;
-    transition: opacity 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+#gallery-images img:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Mostrar las imágenes cuando el cursor pasa por encima de la galería */
 #gallery.show-images #gallery-images {
     display: grid;
 }
 
 /* Estilo del pie de página */
 footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
-    text-align: center;
     background-color: #333;
-    padding: 10px;
-    font-size: 14px;
+    padding: 15px 0;
+    text-align: center;
+    color: white;
 }
 
 footer a {
     color: #bbb;
     text-decoration: none;
     margin: 0 10px;
+    font-size: 14px;
 }
 
 footer a:hover {
