@@ -13,7 +13,7 @@
             height: 100%;
             font-family: 'Arial', sans-serif;
             color: white;
-            background-color: #000;
+            background: black;
             overflow-x: hidden;
         }
 
@@ -28,37 +28,28 @@
             z-index: -2;
         }
 
+        /* Logo principal */
+        #logo {
+            display: block;
+            margin: 20px auto;
+            width: 150px;
+            height: auto;
+        }
+
         /* Secciones principales */
-        header, section, footer {
-            padding: 50px 20px;
+        section {
             text-align: center;
-            background: rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s ease-in-out;
+            padding: 50px 20px;
         }
 
-        header:hover, section:hover, footer:hover {
-            background: rgba(0, 0, 0, 0.6);
-        }
-
-        header h1, section h2 {
-            font-size: 2.5em;
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
         }
 
         p {
             font-size: 1.2em;
             line-height: 1.8;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2em;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #00d9ff;
         }
 
         /* Carrusel de imágenes */
@@ -71,7 +62,7 @@
         }
 
         .gallery img {
-            width: 150px;
+            width: 200px;
             height: 150px;
             object-fit: cover;
             border-radius: 10px;
@@ -109,11 +100,45 @@
             }
         }
 
-        /* Botón fijo */
-        .fixed-icon {
+        /* Redes sociales */
+        .socials {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .socials img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .socials img:hover {
+            transform: scale(1.2);
+        }
+
+        /* Contador de visitas */
+        #counter {
             position: fixed;
             bottom: 20px;
             right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1em;
+            z-index: 10;
+        }
+
+        /* Icono HDLC fijo */
+        .fixed-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 100px;
             width: 60px;
             height: auto;
             cursor: pointer;
@@ -125,59 +150,36 @@
             transform: scale(1.2);
         }
 
-        /* Área de contacto */
-        .contact {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 30px;
-            text-align: center;
-        }
-
-        .contact input, .contact textarea {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-        }
-
-        .contact button {
-            padding: 10px 20px;
-            background: #00d9ff;
-            color: #000;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.1em;
-        }
-
-        .contact button:hover {
-            background: #00a3d0;
+        /* Animación de cursor */
+        #cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            z-index: 1000;
+            transition: background-color 0.2s ease;
         }
     </style>
 </head>
 <body>
-    <!-- Video de fondo -->
+    <!-- Fondo de video -->
     <video id="videoBackground" autoplay muted loop>
         <source src="assets/video/page.mp4" type="video/mp4">
         Tu navegador no soporta videos HTML5.
     </video>
 
-    <!-- Encabezado -->
-    <header>
-        <h1>Deepmapping</h1>
-        <nav>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#galeria">Galería</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
+    <!-- Logo principal -->
+    <img id="logo" src="assets/imagenes/logo.png" alt="Logo Deepmapping">
 
     <!-- Sección "Nosotros" -->
     <section id="nosotros">
         <h2>Nosotros</h2>
         <p>
-            Somos un equipo multidisciplinario de artistas chiapanecos, expertos en animación 2D y 3D, 
-            diseño gráfico, impresión 3D y videomapping. Creamos experiencias únicas que transforman espacios en lienzos vivos.
+            Somos un equipo multidisciplinario de artistas chiapanecos, expertos en animación 2D y 3D, diseño gráfico, 
+            impresión 3D y videomapping. Transformamos espacios en lienzos vivos con creatividad e innovación.
         </p>
     </section>
 
@@ -186,35 +188,55 @@
         <h2>Galería</h2>
         <div class="gallery">
             <img src="assets/imagenes/img1.jpg" alt="Imagen 1">
-            <img src="assets/imagenes/img2.png" alt="Imagen 2">
-            <img src="assets/imagenes/img3.png" alt="Imagen 3">
+            <img src="assets/imagenes/img2.jpg" alt="Imagen 2">
+            <img src="assets/imagenes/img3.jpg" alt="Imagen 3">
+            <img src="assets/imagenes/img4.jpg" alt="Imagen 4">
+            <img src="assets/imagenes/img5.jpg" alt="Imagen 5">
         </div>
     </section>
 
-    <!-- Área de contacto -->
-    <section id="contacto" class="contact">
-        <h2>Contacto</h2>
-        <form>
-            <input type="text" name="nombre" placeholder="Nombre completo" required>
-            <input type="email" name="email" placeholder="Correo electrónico" required>
-            <textarea name="mensaje" placeholder="Escribe tu mensaje" rows="5" required></textarea>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
+    <!-- Redes sociales -->
+    <div class="socials">
+        <a href="https://www.facebook.com/" target="_blank"><img src="assets/imagenes/facebook.svg" alt="Facebook"></a>
+        <a href="https://www.instagram.com/deepmapping.chiapas/profilecard/?igsh=eXhzNTJmb2szM20w" target="_blank"><img src="assets/imagenes/instagram.svg" alt="Instagram"></a>
+    </div>
 
-    <!-- Icono fijo -->
+    <!-- Contador de visitas -->
+    <div id="counter">Visitas: <span id="visitCount">0</span></div>
+
+    <!-- Icono HDLC -->
     <a href="https://www.facebook.com/" target="_blank">
-        <img class="fixed-icon" src="assets/imagenes/hdlc.png" alt="HDLC">
+        <img class="fixed-icon" src="assets/imagenes/hdlc.svg" alt="HDLC">
     </a>
 
-    <!-- Script para ampliar imágenes -->
+    <!-- Cursor animado -->
+    <div id="cursor"></div>
+
     <script>
+        // Animación de cursor
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.top = `${e.pageY}px`;
+            cursor.style.left = `${e.pageX}px`;
+        });
+        document.addEventListener('click', () => {
+            cursor.style.backgroundColor = 'red';
+            setTimeout(() => cursor.style.backgroundColor = 'white', 200);
+        });
+
+        // Función para ampliar imágenes
         const images = document.querySelectorAll('.gallery img');
         images.forEach(img => {
             img.addEventListener('click', () => {
                 img.classList.toggle('fullscreen');
             });
         });
+
+        // Contador de visitas
+        let count = localStorage.getItem('visitCount') || 0;
+        count++;
+        localStorage.setItem('visitCount', count);
+        document.getElementById('visitCount').textContent = count;
     </script>
 </body>
 </html>
