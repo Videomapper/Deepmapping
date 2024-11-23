@@ -6,8 +6,10 @@
     <title>DeepMapping - Mapping en Chiapas</title>
     <link rel="stylesheet" href="assets/styles/main.css">
     <script src="assets/scripts/particles.js" defer></script>
+    <script src="assets/scripts/gallery.js" defer></script>
 </head>
 <body>
+
     <!-- Video de fondo -->
     <div class="video-bg">
         <video autoplay muted loop playsinline>
@@ -15,13 +17,17 @@
         </video>
     </div>
 
-    <!-- Logo -->
+    <!-- Header con logo -->
     <header>
         <img src="assets/imagenes/logo.png" alt="DeepMapping Logo" class="logo">
-        <p class="description">Somos artistas visuales especializados en videomapping, animación 2D/3D, diseño y experiencias inmersivas en Chiapas y más allá.</p>
     </header>
 
-    <!-- Galería -->
+    <!-- Descripción de nosotros -->
+    <div class="description">
+        <p>Somos artistas visuales especializados en videomapping, animación 2D/3D, diseño y experiencias inmersivas en Chiapas y más allá.</p>
+    </div>
+
+    <!-- Galería de imágenes -->
     <section class="gallery">
         <h2>Galería de Proyectos</h2>
         <div class="gallery-images">
@@ -33,7 +39,7 @@
         </div>
     </section>
 
-    <!-- Imagen con hipervínculo y redes sociales -->
+    <!-- Imagen con redes sociales -->
     <div class="fixed-corner">
         <a href="https://www.facebook.com/housedelascasas?locale=es_LA" target="_blank">
             <img src="assets/imagenes/hdlc.svg" alt="House de las Casas" class="corner-image">
@@ -53,8 +59,5 @@
 
     <!-- Animación del cursor -->
     <canvas id="particleCanvas"></canvas>
-
-    <!-- Scripts -->
-    <script src="assets/scripts/gallery.js" defer></script>
 </body>
 </html>
