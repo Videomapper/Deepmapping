@@ -23,17 +23,19 @@ header {
     z-index: 10;
 }
 
-#logo h1 {
-    font-size: 36px;
-    color: white;
-    font-weight: bold;
+#logo img {
+    width: 200px;  /* Ajusta el tamaño del logo según lo necesites */
+    height: auto;
 }
 
 /* Estilo del video de fondo */
 #video-container {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    z-index: -1; /* Coloca el video detrás del contenido */
     overflow: hidden;
 }
 
@@ -43,7 +45,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover;  /* Asegura que el video cubra toda la pantalla */
 }
 
 /* Sección de redes sociales */
