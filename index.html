@@ -13,8 +13,7 @@
             height: 100%;
             font-family: 'Arial', sans-serif;
             color: white;
-            overflow-x: hidden;
-            position: relative;
+            overflow: hidden;
             background: black;
         }
 
@@ -29,7 +28,7 @@
             z-index: -1;
         }
 
-        /* Logo principal */
+        /* Logo fijo en la parte superior */
         #logo {
             position: fixed;
             top: 20px;
@@ -40,22 +39,23 @@
             z-index: 10;
         }
 
-        /* Secciones principales */
-        section {
+        /* Sección de nosotros */
+        #nosotros {
             text-align: center;
-            padding: 50px 20px;
-            position: relative;
+            padding: 100px 20px;
             z-index: 5;
         }
 
-        h2 {
-            font-size: 2em;
+        #nosotros h2 {
+            font-size: 2.5em;
             margin-bottom: 20px;
         }
 
-        p {
+        #nosotros p {
             font-size: 1.2em;
             line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         /* Carrusel de imágenes */
@@ -63,8 +63,8 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 20px;
+            margin-top: 40px;
         }
 
         .gallery img {
@@ -140,23 +140,7 @@
             z-index: 10;
         }
 
-        /* Icono HDLC fijo */
-        .fixed-icon {
-            position: fixed;
-            bottom: 20px;
-            right: 100px;
-            width: 60px;
-            height: auto;
-            cursor: pointer;
-            z-index: 10;
-            transition: transform 0.3s ease;
-        }
-
-        .fixed-icon:hover {
-            transform: scale(1.2);
-        }
-
-        /* Animación de cursor con estela de partículas */
+        /* Animación de cursor con partículas */
         #cursor {
             position: fixed;
             width: 20px;
@@ -274,11 +258,6 @@
     <!-- Contador de visitas -->
     <div id="counter">Visitas: <span id="visitCount">0</span></div>
 
-    <!-- Icono HDLC -->
-    <a href="https://www.facebook.com/" target="_blank">
-        <img class="fixed-icon" src="assets/imagenes/hdlc.svg" alt="HDLC">
-    </a>
-
     <!-- Cursor animado -->
     <div id="cursor"></div>
 
@@ -292,26 +271,4 @@
             createParticle(e.pageX, e.pageY);
         });
 
-        function createParticle(x, y) {
-            let particle = document.createElement('div');
-            particle.classList.add('particle');
-            document.body.appendChild(particle);
-            particle.style.left = `${x - 5}px`;
-            particle.style.top = `${y - 5}px`;
-            setTimeout(() => {
-                particle.remove();
-            }, 1000);
-        }
-
-        document.addEventListener('click', function() {
-            cursor.style.backgroundColor = '#' + Math.floor(Math.random() * 16777215).toString(16); // Cambia el color del cursor
-        });
-
-        // Contador de visitas
-        let visitCount = localStorage.getItem('visitCount') || 0;
-        visitCount++;
-        localStorage.setItem('visitCount', visitCount);
-        document.getElementById('visitCount').textContent = visitCount;
-    </script>
-</body>
-</html>
+        function createParticle(x
