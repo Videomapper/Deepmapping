@@ -1,15 +1,28 @@
-// Partículas en el cursor
-document.addEventListener("mousemove", (event) => {
-    const particle = document.createElement("div");
-    particle.classList.add("cursor-particle");
-    document.body.appendChild(particle);
-    particle.style.left = `${event.pageX - 5}px`;
-    particle.style.top = `${event.pageY - 5}px`;
-
-    // Cambio de color al hacer clic
-    particle.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-
-    setTimeout(() => {
-        particle.remove();
-    }, 1500); // Elimina la partícula después de 1.5 segundos
+particlesJS("particles-container", {
+    "particles": {
+        "number": {
+            "value": 10,
+            "density": {
+                "enable": true,
+                "value_area": 800
+            }
+        },
+        "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+                "enable": true,
+                "speed": 4
+            }
+        },
+        "move": {
+            "enable": true,
+            "speed": 1,
+            "direction": "none",
+            "random": true
+        },
+        "line_linked": {
+            "enable": false
+        }
+    }
 });
