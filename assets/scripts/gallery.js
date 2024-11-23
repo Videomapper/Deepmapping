@@ -1,13 +1,14 @@
-// Selección de elementos
-const galleryTitle = document.querySelector(".gallery h2");
-const galleryImages = document.querySelector(".gallery-images");
+document.addEventListener("DOMContentLoaded", () => {
+    const gallery = document.querySelector(".gallery");
+    const images = document.querySelector(".gallery-images");
 
-// Mostrar las imágenes al pasar el cursor sobre el título
-galleryTitle.addEventListener("mouseenter", () => {
-    galleryImages.style.display = "grid";
-});
+    // Mostrar las imágenes al pasar el cursor sobre la galería
+    gallery.addEventListener("mouseenter", () => {
+        images.style.display = "flex";
+    });
 
-// Ocultar las imágenes al salir del área de la galería
-galleryImages.addEventListener("mouseleave", () => {
-    galleryImages.style.display = "none";
+    // Ocultar las imágenes al mover el cursor fuera de la galería
+    gallery.addEventListener("mouseleave", () => {
+        images.style.display = "none";
+    });
 });
