@@ -12,7 +12,7 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            overflow-y: scroll; /* Asegura la barra de desplazamiento */
             font-family: Arial, sans-serif;
             color: white;
             cursor: none; /* Oculta el cursor por defecto */
@@ -51,10 +51,45 @@
             }
         }
 
-        /* Contenido */
+        /* Fondo negro con transparencia */
+        section, header, footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Estilos del carrusel */
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            overflow: hidden;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .gallery img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.2);
+        }
+
+        /* Animación del carrusel (desplazamiento) */
+        .gallery-wrapper {
+            display: flex;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Estilos del contenido */
         header {
             text-align: center;
-            padding: 20px;
         }
 
         nav {
@@ -73,11 +108,6 @@
 
         nav a:hover {
             color: #ffcc00;
-        }
-
-        section {
-            padding: 20px;
-            text-align: center;
         }
 
         footer {
@@ -108,6 +138,7 @@
             border-radius: 5px;
             font-size: 14px;
         }
+
     </style>
 </head>
 <body>
@@ -139,9 +170,13 @@
     <section id="galeria">
         <h2>Galería</h2>
         <div class="gallery">
-            <img src="assets/imagenes/img1.jpg" alt="Imagen 1">
-            <img src="assets/imagenes/img2.jpg" alt="Imagen 2">
-            <img src="assets/imagenes/img3.jpg" alt="Imagen 3">
+            <div class="gallery-wrapper">
+                <img src="assets/imagenes/img1.jpg" alt="Imagen 1">
+                <img src="assets/imagenes/img2.jpg" alt="Imagen 2">
+                <img src="assets/imagenes/img3.jpg" alt="Imagen 3">
+                <img src="assets/imagenes/img4.jpg" alt="Imagen 4">
+                <img src="assets/imagenes/img5.jpg" alt="Imagen 5">
+            </div>
         </div>
     </section>
 
@@ -177,6 +212,18 @@
         document.addEventListener("mousemove", (e) => {
             customCursor.style.left = `${e.clientX}px`;
             customCursor.style.top = `${e.clientY}px`;
+        });
+
+        // Carrusel de la galería: desplazamiento automático al mover el cursor
+        const galleryWrapper = document.querySelector(".gallery-wrapper");
+        const gallery = document.querySelector(".gallery");
+
+        gallery.addEventListener("mousemove", (e) => {
+            const offset = e.clientX - gallery.offsetLeft;
+            const width = gallery.offsetWidth;
+            const maxScroll = galleryWrapper.offsetWidth - gallery.offsetWidth;
+            const scrollAmount = (offset / width) * maxScroll;
+            galleryWrapper.style.transform = `translateX(-${scrollAmount}px)`;
         });
 
         // Contador de visitas
