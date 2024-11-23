@@ -13,8 +13,9 @@
             height: 100%;
             font-family: 'Arial', sans-serif;
             color: white;
-            background: black;
             overflow-x: hidden;
+            position: relative;
+            background: black;
         }
 
         /* Fondo de video */
@@ -30,17 +31,21 @@
 
         /* Logo principal */
         #logo {
-            display: block;
-            margin: 20px auto;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 150px;
             height: auto;
-            z-index: 1;
+            z-index: 10;
         }
 
         /* Secciones principales */
         section {
             text-align: center;
             padding: 50px 20px;
+            position: relative;
+            z-index: 5;
         }
 
         h2 {
@@ -151,7 +156,7 @@
             transform: scale(1.2);
         }
 
-        /* Animación de cursor */
+        /* Animación de cursor con estela de partículas */
         #cursor {
             position: fixed;
             width: 20px;
@@ -162,6 +167,27 @@
             mix-blend-mode: difference;
             z-index: 1000;
             transition: background-color 0.2s ease;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff0;
+            border-radius: 50%;
+            animation: particleMovement 1s forwards;
+            pointer-events: none;
+        }
+
+        @keyframes particleMovement {
+            0% {
+                transform: scale(1) translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0) translate(20px, 20px);
+                opacity: 0;
+            }
         }
 
         /* Área de contacto */
@@ -221,9 +247,9 @@
         <h2>Galería</h2>
         <div class="gallery">
             <img src="assets/imagenes/img1.jpg" alt="Imagen 1">
-            <img src="assets/imagenes/img2.jpg" alt="Imagen 2">
-            <img src="assets/imagenes/img3.jpg" alt="Imagen 3">
-            <img src="assets/imagenes/img4.jpg" alt="Imagen 4">
+            <img src="assets/imagenes/img2.png" alt="Imagen 2">
+            <img src="assets/imagenes/img3.png" alt="Imagen 3">
+            <img src="assets/imagenes/img4.png" alt="Imagen 4">
             <img src="assets/imagenes/img5.jpg" alt="Imagen 5">
         </div>
     </section>
@@ -257,30 +283,35 @@
     <div id="cursor"></div>
 
     <script>
-        // Animación de cursor
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.top = `${e.pageY}px`;
-            cursor.style.left = `${e.pageX}px`;
-        });
-        document.addEventListener('click', () => {
-            cursor.style.backgroundColor = 'red';
-            setTimeout(() => cursor.style.backgroundColor = 'white', 200);
+        // Animación de cursor con partículas
+        let cursor = document.getElementById('cursor');
+        let particles = [];
+        document.addEventListener('mousemove', function(e) {
+            cursor.style.left = `${e.pageX - 10}px`;
+            cursor.style.top = `${e.pageY - 10}px`;
+            createParticle(e.pageX, e.pageY);
         });
 
-        // Función para ampliar imágenes
-        const images = document.querySelectorAll('.gallery img');
-        images.forEach(img => {
-            img.addEventListener('click', () => {
-                img.classList.toggle('fullscreen');
-            });
+        function createParticle(x, y) {
+            let particle = document.createElement('div');
+            particle.classList.add('particle');
+            document.body.appendChild(particle);
+            particle.style.left = `${x - 5}px`;
+            particle.style.top = `${y - 5}px`;
+            setTimeout(() => {
+                particle.remove();
+            }, 1000);
+        }
+
+        document.addEventListener('click', function() {
+            cursor.style.backgroundColor = '#' + Math.floor(Math.random() * 16777215).toString(16); // Cambia el color del cursor
         });
 
         // Contador de visitas
-        let count = localStorage.getItem('visitCount') || 0;
-        count++;
-        localStorage.setItem('visitCount', count);
-        document.getElementById('visitCount').textContent = count;
+        let visitCount = localStorage.getItem('visitCount') || 0;
+        visitCount++;
+        localStorage.setItem('visitCount', visitCount);
+        document.getElementById('visitCount').textContent = visitCount;
     </script>
 </body>
 </html>
