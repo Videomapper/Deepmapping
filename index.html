@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeepMapping - Mapping en Chiapas</title>
-    <link rel="stylesheet" href="assets/styles/main.css">
     <style>
-        /* Estilo general */
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
@@ -25,16 +23,6 @@
             height: auto;
             z-index: 10;
             position: relative;
-        }
-        /* Video de fondo */
-        .video-bg video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
         }
         .main-content {
             text-align: center;
@@ -85,7 +73,7 @@
             transform: scale(1.05);
             filter: brightness(1.2);
         }
-        /* Imagen en la esquina inferior derecha */
+        /* Imagen con hipervínculo */
         .corner-image {
             position: fixed;
             bottom: 20px;
@@ -94,25 +82,11 @@
             height: auto;
             z-index: 10;
         }
-        /* Animación del cursor */
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1000;
-        }
     </style>
 </head>
 <body>
-    <!-- Video de fondo -->
-    <div class="video-bg">
-        <video autoplay muted loop playsinline>
-            <source src="assets/video/page.mp4" type="video/mp4">
-        </video>
-    </div>
+    <!-- Contenedor de renderizado -->
+    <div id="render-container" style="width: 100%; height: 100vh;"></div>
 
     <!-- Logo -->
     <header>
@@ -147,65 +121,60 @@
         <img src="assets/imagenes/hdlc.svg" alt="House de las Casas" class="corner-image">
     </a>
 
-    <!-- Animación del cursor -->
-    <canvas id="particleCanvas"></canvas>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        const canvas = document.getElementById("particleCanvas");
-        const ctx = canvas.getContext("2d");
-        let particles = [];
+        // Configura el renderizador
+        const container = document.getElementById('render-container');
+        const renderer = new THREE.WebGLRenderer({
+            canvas: document.createElement('canvas'),
+            antialias: true
+        });
+        renderer.setSize(container.offsetWidth, container.offsetHeight);
+        container.appendChild(renderer.domElement);
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // Crea la escena y la cámara
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
 
-        window.addEventListener("resize", () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+        // Carga el modelo 3D
+        const loader = new THREE.GLTFLoader();
+        loader.load('assets/modelos/modelo.glb', (gltf) => {
+            scene.add(gltf.scene);
         });
 
-        class Particle {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.size = Math.random() * 5 + 1;
-                this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                this.velocityX = Math.random() * 2 - 1;
-                this.velocityY = Math.random() * 2 - 1;
-                this.opacity = 1;
-            }
+        // Configura la luz
+        const light = new THREE.PointLight(0xffffff, 1, 50);
+        scene.add(light);
 
-            update() {
-                this.x += this.velocityX;
-                this.y += this.velocityY;
-                this.opacity -= 0.02;
-            }
+        // Detecta el movimiento del cursor
+        container.addEventListener('mousemove', (event) => {
+            // Calcula la posición del cursor en la escena
+            const rect = container.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            const vector = new THREE.Vector3(x, y, 0);
+            vector.unproject(camera);
+            const dir = vector.sub(camera.position).normalize();
+            const distance = -camera.position.z / dir.z;
+            const pos = camera.position.clone().add(dir.multiplyScalar(distance));
 
-            draw() {
-                ctx.globalAlpha = this.opacity;
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
+            // Actualiza la posición de la luz
+            light.position.copy(pos);
+        });
 
+        // Renderiza la escena
         function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles = particles.filter(p => p.opacity > 0);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
             requestAnimationFrame(animate);
+            renderer.render(scene, camera);
         }
-
-        window.addEventListener("mousemove", (e) => {
-            for (let i = 0; i < 5; i++) {
-                particles.push(new Particle(e.clientX, e.clientY));
-            }
-        });
-
         animate();
+
+        // Ajusta el tamaño del renderizador al cambiar el tamaño de la ventana
+        window.addEventListener('resize', () => {
+            renderer.setSize(container.offsetWidth, container.offsetHeight);
+            camera.aspect = container.offsetWidth / container.offsetHeight;
+            camera.updateProjectionMatrix();
+        });
     </script>
 </body>
 </html>
