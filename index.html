@@ -117,8 +117,8 @@
     </section>
 
     <!-- Imagen con hipervínculo -->
-    <a href="https://www.facebook.com/housedelascasas?locale=es_LA" target="_blank">
-        <img src="assets/imagenes/hdlc.svg" alt="House de las Casas" class="corner-image">
+    <a href="https://www.facebook.com/housedelascasas?locale=es_LA" target="_blank">       
+    <img src="assets/imagenes/hdlc.svg" alt="House de las Casas" class="corner-image">
     </a>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -139,16 +139,17 @@
         // Carga el modelo 3D
         const loader = new THREE.GLTFLoader();
         loader.load('assets/modelos/modelo.glb', (gltf) => {
-            scene.add(gltf.scene);
+            const modelo = gltf.scene;
+            modelo.scale.set(0.5, 0.5, 0.5); // Ajusta el tamaño del modelo
+            scene.add(modelo);
         });
 
         // Configura la luz
-        const light = new THREE.PointLight(0xffffff, 1, 50);
+        const light = new THREE.PointLight(0xffffff, 1, 100);
         scene.add(light);
 
         // Detecta el movimiento del cursor
         container.addEventListener('mousemove', (event) => {
-            // Calcula la posición del cursor en la escena
             const rect = container.getBoundingClientRect();
             const x = event.clientX - rect.left;
             const y = event.clientY - rect.top;
@@ -157,8 +158,6 @@
             const dir = vector.sub(camera.position).normalize();
             const distance = -camera.position.z / dir.z;
             const pos = camera.position.clone().add(dir.multiplyScalar(distance));
-
-            // Actualiza la posición de la luz
             light.position.copy(pos);
         });
 
