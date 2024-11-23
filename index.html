@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DeepMapping es un estudio creativo especializado en videomapping y experiencias visuales inmersivas en Chiapas.">
     <title>DeepMapping - Mapping en Chiapas</title>
+    <link rel="icon" href="assets/imagenes/favicon.ico">
     <style>
         body {
             margin: 0;
@@ -94,13 +96,13 @@
         <p class="description">Somos artistas visuales especializados en videomapping, animación 2D/3D, diseño y experiencias inmersivas en Chiapas y más allá.</p>
         <!-- Redes sociales -->
         <div class="social-links">
-            <a href="https://www.facebook.com/mappingenchiapas?locale=es_LA" target="_blank">
+            <a href="https://www.facebook.com/mappingenchiapas?locale=es_LA" target="_blank" title="Visítanos en Facebook">
                 <img src="assets/imagenes/facebook.svg" alt="Facebook" class="social-icon">
             </a>
-            <a href="https://www.instagram.com/deepmapping" target="_blank">
+            <a href="https://www.instagram.com/deepmapping" target="_blank" title="Síguenos en Instagram">
                 <img src="assets/imagenes/instagram.svg" alt="Instagram" class="social-icon">
             </a>
-            <a href="https://www.tiktok.com/@deepmapping?_t=8rcdlvE8mNb&_r=1" target="_blank">
+            <a href="https://www.tiktok.com/@deepmapping?_t=8rcdlvE8mNb&_r=1" target="_blank" title="Descúbrenos en TikTok">
                 <img src="assets/imagenes/tiktok.svg" alt="TikTok" class="social-icon">
             </a>
         </div>
@@ -118,10 +120,13 @@
 
     <!-- Imagen con hipervínculo -->
     <a href="https://www.facebook.com/housedelascasas?locale=es_LA" target="_blank">       
-    <img src="assets/imagenes/hdlc.svg" alt="House de las Casas" class="corner-image">
+        <img src="assets/imagenes/hdlc.svg" alt="House de las Casas" class="corner-image">
     </a>
 
+    <!-- Cargar Three.js y GLTFLoader -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/GLTFLoader.js"></script>
+
     <script>
         // Configura el renderizador
         const container = document.getElementById('render-container');
@@ -142,6 +147,8 @@
             const modelo = gltf.scene;
             modelo.scale.set(0.5, 0.5, 0.5); // Ajusta el tamaño del modelo
             scene.add(modelo);
+        }, undefined, function (error) {
+            console.error('Error al cargar el modelo 3D:', error);
         });
 
         // Configura la luz
