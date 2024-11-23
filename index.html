@@ -4,35 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeepMapping - Mapping en Chiapas</title>
+    <link rel="stylesheet" href="assets/styles/main.css">
     <style>
+        /* Estilo general */
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
             background-color: #000;
             color: #fff;
-            overflow: hidden;
-        }
-        #render-container {
-            width: 100%;
-            height: 100vh;
+            overflow-x: hidden;
         }
         header {
+            position: relative;
             text-align: center;
             margin-top: 20px;
-            z-index: 10;
-            position: relative;
         }
         .logo {
             max-width: 500px;
             width: 80%;
             height: auto;
+            z-index: 10;
+            position: relative;
         }
+        /* Video de fondo */
+        .video-bg video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .main-content {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 5;
+        }
+        /* Descripción de quiénes somos */
         .description {
             font-size: 1.5rem;
             font-weight: bold;
             margin: 20px auto;
             max-width: 800px;
         }
+        /* Redes sociales */
         .social-links {
             margin: 30px 0;
             display: flex;
@@ -48,6 +65,27 @@
             transform: scale(1.2);
             filter: brightness(1.5);
         }
+        /* Galería */
+        .gallery {
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            max-width: 90%;
+            position: relative;
+            z-index: 5;
+        }
+        .gallery img {
+            width: 100%;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2);
+        }
+        /* Imagen en la esquina inferior derecha */
         .corner-image {
             position: fixed;
             bottom: 20px;
@@ -56,16 +94,31 @@
             height: auto;
             z-index: 10;
         }
+        /* Animación del cursor */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
-    <!-- Contenedor de renderizado -->
-    <div id="render-container"></div>
+    <!-- Video de fondo -->
+    <div class="video-bg">
+        <video autoplay muted loop playsinline>
+            <source src="assets/video/page.mp4" type="video/mp4">
+        </video>
+    </div>
 
-    <!-- Logo y descripción -->
+    <!-- Logo -->
     <header>
         <img src="assets/imagenes/logo.png" alt="DeepMapping Logo" class="logo">
         <p class="description">Somos artistas visuales especializados en videomapping, animación 2D/3D, diseño y experiencias inmersivas en Chiapas y más allá.</p>
+        <!-- Redes sociales -->
         <div class="social-links">
             <a href="https://www.facebook.com/mappingenchiapas?locale=es_LA" target="_blank">
                 <img src="assets/imagenes/facebook.svg" alt="Facebook" class="social-icon">
@@ -79,55 +132,80 @@
         </div>
     </header>
 
+    <!-- Galería -->
+    <section class="gallery">
+        <h2>Galería de Proyectos</h2>
+        <img src="assets/imagenes/img1.jpg" alt="Proyecto 1">
+        <img src="assets/imagenes/img2.png" alt="Proyecto 2">
+        <img src="assets/imagenes/img3.png" alt="Proyecto 3">
+        <img src="assets/imagenes/img4.png" alt="Proyecto 4">
+        <img src="assets/imagenes/img5.jpg" alt="Proyecto 5">
+    </section>
+
     <!-- Imagen con hipervínculo -->
     <a href="https://www.facebook.com/housedelascasas?locale=es_LA" target="_blank">
         <img src="assets/imagenes/hdlc.svg" alt="House de las Casas" class="corner-image">
     </a>
 
-    <!-- Scripts de Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/FBXLoader.min.js"></script>
+    <!-- Animación del cursor -->
+    <canvas id="particleCanvas"></canvas>
+
     <script>
-        // Configuración inicial
-        const container = document.getElementById('render-container');
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(container.offsetWidth, container.offsetHeight);
-        container.appendChild(renderer.domElement);
+        const canvas = document.getElementById("particleCanvas");
+        const ctx = canvas.getContext("2d");
+        let particles = [];
 
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
-        camera.position.set(0, 2, 5);
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-        // Luz en la escena
-        const light = new THREE.DirectionalLight(0xffffff, 1);
-        light.position.set(5, 5, 5);
-        scene.add(light);
-
-        const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
-        scene.add(ambientLight);
-
-        // Carga del modelo FBX
-        const loader = new THREE.FBXLoader();
-        loader.load('assets/modelos/modelo.fbx', (object) => {
-            object.scale.set(0.01, 0.01, 0.01); // Ajusta la escala del modelo
-            scene.add(object);
-        }, undefined, (error) => {
-            console.error('Error al cargar el modelo FBX:', error);
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         });
 
-        // Animación y renderizado
-        function animate() {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 5 + 1;
+                this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                this.velocityX = Math.random() * 2 - 1;
+                this.velocityY = Math.random() * 2 - 1;
+                this.opacity = 1;
+            }
+
+            update() {
+                this.x += this.velocityX;
+                this.y += this.velocityY;
+                this.opacity -= 0.02;
+            }
+
+            draw() {
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
         }
-        animate();
 
-        // Ajuste dinámico del tamaño del canvas
-        window.addEventListener('resize', () => {
-            renderer.setSize(container.offsetWidth, container.offsetHeight);
-            camera.aspect = container.offsetWidth / container.offsetHeight;
-            camera.updateProjectionMatrix();
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles = particles.filter(p => p.opacity > 0);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener("mousemove", (e) => {
+            for (let i = 0; i < 5; i++) {
+                particles.push(new Particle(e.clientX, e.clientY));
+            }
         });
+
+        animate();
     </script>
 </body>
 </html>
