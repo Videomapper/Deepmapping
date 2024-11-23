@@ -12,9 +12,9 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow-y: scroll;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             color: white;
+            background-color: #000;
         }
 
         /* Fondo de video */
@@ -28,107 +28,134 @@
             z-index: -2;
         }
 
-        /* Fondo negro con transparencia */
-        section, header, footer {
-            background: rgba(0, 0, 0, 0.3);
+        /* Contenedores */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
+        }
+
+        header {
             text-align: center;
-            margin-bottom: 30px;
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Cursor animado */
-        #customCursor {
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            border-radius: 50%;
-            position: absolute;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: translate(-50%, -50%) scale(1);
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.5);
-            }
-        }
-
-        /* Logo */
-        #logo {
+        header img {
             width: 150px;
             margin-bottom: 20px;
         }
 
-        /* Redes sociales */
-        .social-icons {
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00d9ff;
+        }
+
+        /* Sección "Nosotros" */
+        section#nosotros {
+            padding: 50px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        section#nosotros h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        section#nosotros p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* Sección "Galería" */
+        section#galeria {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        section#galeria h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .gallery {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
         }
 
-        .social-icons img {
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .social-icons img:hover {
-            transform: scale(1.2);
-        }
-
-        /* Carrusel */
-        .gallery {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            overflow: hidden;
-            width: 80%;
-            margin: 0 auto;
-        }
-
         .gallery img {
-            width: 80px;
-            height: 80px;
+            width: 150px;
+            height: 150px;
             object-fit: cover;
             cursor: pointer;
-            transition: transform 0.3s ease-in-out;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .gallery img:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
         }
 
-        /* Imagen ampliada */
-        .fullscreen {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 90%;
-            max-height: 90%;
-            z-index: 1000;
-            border: 2px solid white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-            background-color: rgba(0, 0, 0, 0.7);
-            animation: fadeIn 0.3s ease-in-out;
+        /* Contacto */
+        section#contacto {
+            padding: 50px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        section#contacto h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        section#contacto form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        section#contacto input, section#contacto textarea {
+            width: calc(100% - 20px);
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        section#contacto button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #00d9ff;
+            color: white;
+            font-size: 1.2em;
             cursor: pointer;
+            transition: background 0.3s;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        section#contacto button:hover {
+            background: #0086a3;
         }
 
-        /* Icono fijo en la esquina inferior derecha */
+        /* Icono fijo */
         .fixed-icon {
             position: fixed;
             bottom: 20px;
@@ -143,13 +170,18 @@
         .fixed-icon:hover {
             transform: scale(1.2);
         }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
 <body>
-    <!-- Cursor personalizado -->
-    <div id="customCursor"></div>
-
-    <!-- Video de fondo -->
+    <!-- Fondo de video -->
     <video id="videoBackground" autoplay muted loop>
         <source src="assets/video/page.mp4" type="video/mp4">
         Tu navegador no soporta videos HTML5.
@@ -157,7 +189,7 @@
 
     <!-- Encabezado -->
     <header>
-        <img id="logo" src="assets/imagenes/logo.png" alt="Deepmapping Logo">
+        <img src="assets/imagenes/logo.png" alt="Deepmapping Logo">
         <h1>Deepmapping</h1>
         <nav>
             <a href="#nosotros">Nosotros</a>
@@ -166,13 +198,17 @@
         </nav>
     </header>
 
-    <!-- Redes sociales -->
-    <div class="social-icons">
-        <a href="#"><img src="assets/imagenes/facebook.svg" alt="Facebook"></a>
-        <a href="#"><img src="assets/imagenes/instagram.svg" alt="Instagram"></a>
-    </div>
+    <!-- Sección "Nosotros" -->
+    <section id="nosotros" class="container">
+        <h2>Nosotros</h2>
+        <p>
+            En *Deepmapping* fusionamos arte, tecnología e innovación. Nuestro equipo incluye artistas chiapanecos especializados en 
+            animación 2D y 3D, diseño, impresión 3D y videomapping. Creamos experiencias visuales únicas, destacando la creatividad 
+            y las tradiciones locales, transformando cualquier espacio en un lienzo de luz y color.
+        </p>
+    </section>
 
-    <!-- Galería -->
+    <!-- Sección "Galería" -->
     <section id="galeria">
         <h2>Galería</h2>
         <div class="gallery">
@@ -184,18 +220,18 @@
         </div>
     </section>
 
-    <!-- Contacto -->
+    <!-- Sección "Contacto" -->
     <section id="contacto">
         <h2>Contacto</h2>
         <form>
             <input type="text" placeholder="Nombre" required>
             <input type="email" placeholder="Correo" required>
-            <textarea placeholder="Mensaje"></textarea>
+            <textarea placeholder="Mensaje" rows="4"></textarea>
             <button type="submit">Enviar</button>
         </form>
     </section>
 
-    <!-- Contador de visitas -->
+    <!-- Footer -->
     <footer>
         <p>Visitas: <span id="visitCounter">0</span></p>
     </footer>
@@ -205,28 +241,13 @@
         <img class="fixed-icon" src="assets/imagenes/hdlc.png" alt="HDLC">
     </a>
 
+    <!-- Script para contador -->
     <script>
-        // Animación del cursor
-        const cursor = document.getElementById('customCursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = `${e.pageX}px`;
-            cursor.style.top = `${e.pageY}px`;
-        });
-
-        // Funcionalidad del contador de visitas
         const visitCounter = document.getElementById('visitCounter');
         let visits = localStorage.getItem('visits') || 0;
         visits++;
         localStorage.setItem('visits', visits);
         visitCounter.textContent = visits;
-
-        // Ampliación de imágenes
-        const galleryImages = document.querySelectorAll('.gallery img');
-        galleryImages.forEach((img) => {
-            img.addEventListener('click', () => {
-                img.classList.toggle('fullscreen');
-            });
-        });
     </script>
 </body>
 </html>
