@@ -70,11 +70,12 @@ header {
 /* Descripción interactiva */
 #description {
     position: absolute;
-    top: 180%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     display: none; /* Oculto por defecto */
+    z-index: 80;
 }
 
 #description p {
@@ -83,6 +84,7 @@ header {
     line-height: 1.5;
     color: white;
     max-width: 800px;
+    z-index: 90;
 }
 
 body:hover #description {
@@ -91,7 +93,7 @@ body:hover #description {
 
 /* Galería */
 #gallery-link {
-    position: fixed;
+    position: absolute;
     bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
