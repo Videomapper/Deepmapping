@@ -1,28 +1,31 @@
-// Mostrar y ocultar la descripción cuando el cursor pasa por encima
+// Activar la visualización de la descripción cuando el cursor está sobre ella
 const description = document.getElementById('description');
-const descriptionText = description.querySelector('p');
 
-description.addEventListener('mouseenter', () => {
-    description.style.display = 'block'; // Muestra la descripción
+document.addEventListener('mousemove', function(event) {
+    // Hacer que la descripción aparezca solo cuando el cursor está sobre ella
+    if (event.target.closest('#description')) {
+        description.classList.add('show');
+    } else {
+        description.classList.remove('show');
+    }
 });
 
-description.addEventListener('mouseleave', () => {
-    description.style.display = 'none'; // Oculta la descripción
-});
-
-// Mostrar la galería cuando el cursor pasa sobre la sección
-const gallerySection = document.getElementById('gallery');
-
-gallerySection.addEventListener('mouseenter', () => {
-    const galleryImages = document.querySelectorAll('.gallery-image');
-    galleryImages.forEach(image => {
-        image.style.opacity = 1; // Muestra las imágenes
-    });
-});
-
-gallerySection.addEventListener('mouseleave', () => {
-    const galleryImages = document.querySelectorAll('.gallery-image');
-    galleryImages.forEach(image => {
-        image.style.opacity = 0; // Oculta las imágenes
-    });
+// Función para el cursor animado
+document.addEventListener('mousemove', (e) => {
+    let x = e.clientX;
+    let y = e.clientY;
+    const cursorParticles = document.querySelector('.particles-container');
+    
+    for (let i = 0; i < 10; i++) {
+        let particle = document.createElement('div');
+        particle.classList.add('cursor-particle');
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        particle.style.backgroundColor = `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`;
+        cursorParticles.appendChild(particle);
+        
+        setTimeout(() => {
+            particle.remove();
+        }, 1500); // Remueve las partículas después de un tiempo
+    }
 });
