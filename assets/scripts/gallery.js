@@ -1,13 +1,10 @@
-document.getElementById("gallery").addEventListener("mouseenter", function() {
-    const images = document.querySelectorAll(".gallery-image");
-    images.forEach(image => {
-        image.style.opacity = 1; // Muestra las imágenes
-    });
+const gallery = document.getElementById('gallery');
+const galleryImages = document.getElementById('gallery-images');
+
+gallery.addEventListener('mouseenter', function() {
+    gallery.classList.add('show-images');
 });
 
-document.getElementById("gallery").addEventListener("mouseleave", function() {
-    const images = document.querySelectorAll(".gallery-image");
-    images.forEach(image => {
-        image.style.opacity = 0; // Oculta las imágenes
-    });
+gallery.addEventListener('mouseleave', function() {
+    gallery.classList.remove('show-images');
 });
