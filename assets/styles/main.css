@@ -1,7 +1,7 @@
 /* Reset general */
 * {
-    margin: 50;
-    padding: 0;
+    margin: 150;
+    padding: 100;
     box-sizing: border-box;
 }
 
@@ -70,7 +70,7 @@ header {
 /* Descripción interactiva */
 #description {
     position: absolute;
-    top: 80%;
+    top: 150%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
