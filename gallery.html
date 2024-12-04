@@ -3,39 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Galería | DeepMapping</title>
     <link rel="stylesheet" href="assets/styles/main.css">
     <script src="assets/scripts/gallery.js" defer></script>
 </head>
 <body>
-    <!-- Header con el nombre o logo del proyecto -->
-    <header>
-        <div id="logo">
-            <h1>DeepMapping</h1>
+    <!-- Header con el logo del proyecto -->
+    <header class="header">
+        <div class="header__logo">
+            <a href="index.html" aria-label="Volver a la página principal">
+                <img src="assets/imagenes/logo.png" alt="DeepMapping Logo">
+            </a>
         </div>
     </header>
 
     <!-- Enlace para volver a la página principal -->
-    <div id="back-link">
+    <nav id="back-link" aria-label="Navegación principal">
         <a href="index.html">Volver a la página principal</a>
-    </div>
+    </nav>
 
     <!-- Galería de imágenes -->
-    <div class="gallery" id="gallery">
-        <h3>Galería de Imágenes</h3>
-        <div class="gallery-images" id="gallery-images">
-            <img src="assets/imagenes/img1.jpg" alt="Imagen 1">
-            <img src="assets/imagenes/img2.png" alt="Imagen 2">
-            <img src="assets/imagenes/img3.png" alt="Imagen 3">
-            <img src="assets/imagenes/img4.png" alt="Imagen 4">
-            <img src="assets/imagenes/img5.jpg" alt="Imagen 5">
-        </div>
-    </div>
+    <main class="gallery" id="gallery">
+        <h1 class="gallery__title">Galería de Imágenes</h1>
+        <section class="gallery-images" id="gallery-images">
+            <figure>
+                <img src="assets/imagenes/img1.jpg" alt="Descripción breve de la Imagen 1">
+                <figcaption>Descripción de la Imagen 1</figcaption>
+            </figure>
+            <figure>
+                <img src="assets/imagenes/img2.png" alt="Descripción breve de la Imagen 2">
+                <figcaption>Descripción de la Imagen 2</figcaption>
+            </figure>
+            <figure>
+                <img src="assets/imagenes/img3.png" alt="Descripción breve de la Imagen 3">
+                <figcaption>Descripción de la Imagen 3</figcaption>
+            </figure>
+            <figure>
+                <img src="assets/imagenes/img4.png" alt="Descripción breve de la Imagen 4">
+                <figcaption>Descripción de la Imagen 4</figcaption>
+            </figure>
+            <figure>
+                <img src="assets/imagenes/img5.jpg" alt="Descripción breve de la Imagen 5">
+                <figcaption>Descripción de la Imagen 5</figcaption>
+            </figure>
+        </section>
+    </main>
 
-    <!-- Footer con derechos reservados -->
-    <footer>
-        <p>&copy; 2024 DeepMapping. Todos los derechos reservados | <a href="/politicas">Políticas de privacidad</a> | <a href="/terminos">Términos y condiciones</a></p>
+    <!-- Footer -->
+    <footer class="footer">
+        <nav class="footer-links" aria-label="Enlaces de footer">
+            <a href="politica_privacidad.html">Política de Privacidad</a> |
+            <a href="terminos_servicio.html">Términos y Condiciones</a>
+        </nav>
+        <p>&copy; 2024 DeepMapping. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
