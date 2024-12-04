@@ -1,45 +1,48 @@
-/* General */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #1a1a1a; /* Fondo oscuro para todo el cuerpo */
-    color: #fff; /* Color de texto blanco */
+/* Reset de márgenes y paddings por defecto */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    min-height: 100vh;
 }
 
-/* Encabezado */
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Header */
 header {
-    padding: 20px;
-    text-align: center;
-    background-color: transparent; /* Fondo transparente */
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    z-index: 100;
+    padding: 20px;
+    z-index: 10;
 }
 
-header #logo img {
-    max-width: 100%;
+header a img {
+    width: 150px;
     height: auto;
 }
 
-/* Contenedor de video */
+/* Video de fondo */
 #video-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    z-index: -1; /* El video estará detrás del contenido */
+    height: 100%;
+    z-index: -1;
 }
 
 #background-video {
-    object-fit: cover;
     width: 100%;
     height: 100%;
-    opacity: 0.75;
+    object-fit: cover;
 }
 
 /* Descripción interactiva */
@@ -50,53 +53,134 @@ header #logo img {
     transform: translate(-50%, -50%);
     text-align: center;
     font-size: 24px;
+    max-width: 90%;
     opacity: 0;
-    transition: opacity 0.5s ease;
-    color: #fff;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 }
 
 #description.show {
     opacity: 1;
 }
 
-/* Redefiniendo la galería */
+/* Social Media Icons */
+#social-media {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 10;
+}
+
+#social-media a {
+    margin: 10px;
+}
+
+#social-media img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+#social-media a:hover img {
+    transform: scale(1.1);
+}
+
+/* Enlace a la Galería */
 #gallery-link {
-    text-align: center;
-    margin-top: 20px;
+    position: fixed; /* Fijo en la parte inferior */
+    bottom: 60px; /* Espacio desde el fondo, justo encima del footer */
+    left: 20px; /* Alineado a la izquierda */
+    z-index: 100;
 }
 
 #gallery-link a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
     color: #fff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 #gallery-link a:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    z-index: 10;
+}
+
+footer .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer .footer-links a:hover {
     text-decoration: underline;
 }
 
-/* Redefinir la galería */
+/* Partículas interactiva */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.cursor-particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: particle-animation 1s forwards;
+}
+
+@keyframes particle-animation {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* Estilos para galería */
 .gallery {
-    padding: 50px;
+    padding: 50px 20px;
     text-align: center;
 }
 
 .gallery h3 {
-    font-size: 30px;
+    font-size: 24px;
     margin-bottom: 20px;
 }
 
 .gallery-images {
     display: flex;
+    justify-content: space-around;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
 }
 
 .gallery-images img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
+    width: 30%;
+    margin: 10px;
+    border-radius: 10px;
     transition: transform 0.3s ease;
 }
 
@@ -104,80 +188,52 @@ header #logo img {
     transform: scale(1.05);
 }
 
-/* Footer */
-footer {
-    position: fixed;
-    bottom: 0;
+/* Formulario de contacto */
+.contact-form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.contact-form p {
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
     width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact-form button {
+    padding: 12px 20px;
     background-color: #333;
     color: #fff;
-    padding: 15px 0;
-    text-align: center;
-    z-index: 1000;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-footer a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-footer p {
-    margin: 0;
-    font-size: 14px;
-}
-
-/* Redes Sociales */
-#social-media {
-    position: fixed; /* Fijo en la parte inferior */
-    bottom: 60px; /* Espacio desde el fondo, justo encima del footer */
-    right: 20px; /* Alineado a la derecha */
-}
-
-#social-media a {
-    margin: 0 10px;
-}
-
-.social-icon {
-    width: 30px;
-    height: 30px;
-    transition: transform 0.3s ease;
-}
-
-.social-icon:hover {
-    transform: scale(1.1);
-}
-
-/* Partículas */
-.particles-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.cursor-particle {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    animation: particle-animation 1s forwards;
-}
-
-@keyframes particle-animation {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(0);
-        opacity: 0;
-    }
+.contact-form button:hover {
+    background-color: #555;
 }
