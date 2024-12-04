@@ -1,7 +1,7 @@
 /* Reset general */
 * {
-    margin: 50;
-    padding: 100;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -10,23 +10,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: #000;
     color: white;
-    overflow-x: hidden;
+    overflow: hidden; /* Controla desbordamientos */
     position: relative;
-}
-
-/* Header con logo */
-header {
-    position: fixed;
-    top: 50px;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 0;
-    text-align: center;
-}
-
-#logo img {
-    width: 200px;
-    height: auto;
 }
 
 /* Video de fondo */
@@ -49,10 +34,27 @@ header {
     object-fit: cover;
 }
 
+/* Logo centrado */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background: rgba(0, 0, 0, 0.5); /* Fondo transparente */
+}
+
+#logo img {
+    width: 150px;
+    height: auto;
+}
+
 /* Redes sociales */
 #social-media {
     position: fixed;
-    bottom: 80px; /* Para dejar espacio al footer */
+    bottom: 70px; /* Deja espacio para el footer */
     left: 20px;
     display: flex;
     gap: 15px;
@@ -71,39 +73,40 @@ header {
 /* Descripción interactiva */
 #description {
     position: fixed;
-    bottom: 40px;
-    left: 50px;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    display: none; /* Oculto por defecto */
-    z-index: 80;
+    display: none; /* Oculto inicialmente */
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+#description:hover {
+    display: block; /* Visible solo cuando se interactúa */
 }
 
 #description p {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     line-height: 1.5;
     color: white;
     max-width: 800px;
-    z-index: 90;
-}
-
-body:hover #description {
-    display: none;
-    gap: 25px;
 }
 
 /* Galería */
 #gallery-link {
     position: fixed;
-    bottom: 60px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
 }
 
 #gallery-link a {
-    font-size: 20px;
+    font-size: 18px;
     text-decoration: none;
     color: white;
     border: 2px solid white;
@@ -114,7 +117,6 @@ body:hover #description {
 
 #gallery-link a:hover {
     background-color: rgba(255, 255, 255, 0.2);
-    z-index: 90;
 }
 
 /* Footer fijo */
