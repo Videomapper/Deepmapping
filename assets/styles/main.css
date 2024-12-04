@@ -16,13 +16,15 @@ body {
 
 /* Header con logo */
 header {
-    position: absolute;
+    position: fixed;
     top: 50;
     left: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px 0;
     text-align: center;
+    display: flex;
+    gap: 15px;
 }
 
 #logo img {
