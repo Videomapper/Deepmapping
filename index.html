@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DeepMapping</title>
     <link rel="stylesheet" href="assets/styles/main.css">
     <script src="assets/scripts/particles.js" defer></script>
@@ -12,53 +11,54 @@
 </head>
 <body>
     <!-- Header con el logo -->
-    <header>
-        <div id="logo">
+    <header class="header">
+        <div class="header__logo">
             <img src="assets/imagenes/logo.png" alt="DeepMapping Logo">
         </div>
     </header>
 
     <!-- Redes sociales -->
-    <div id="social-media">
-        <a href="https://www.facebook.com/housedelascasas" target="_blank">
+    <nav id="social-media" aria-label="Redes sociales">
+        <a href="https://www.facebook.com/housedelascasas" target="_blank" aria-label="Facebook HDLC">
             <img src="assets/imagenes/hdlc.svg" alt="HDLC Logo" class="social-icon">
         </a>
-        <a href="https://www.instagram.com/deepmapping.chiapas/profilecard/?igsh=eXhzNTJmb2szM20w" target="_blank">
+        <a href="https://www.instagram.com/deepmapping.chiapas/profilecard/?igsh=eXhzNTJmb2szM20w" target="_blank" aria-label="Instagram">
             <img src="assets/imagenes/instagram.svg" alt="Instagram" class="social-icon">
         </a>
-        <a href="https://www.facebook.com/mappingenchiapas" target="_blank">
+        <a href="https://www.facebook.com/mappingenchiapas" target="_blank" aria-label="Facebook DeepMapping">
             <img src="assets/imagenes/facebook.svg" alt="Facebook" class="social-icon">
         </a>
-        <a href="https://www.tiktok.com/@deepmapping?_t=8rcdlvE8mNb&_r=1" target="_blank">
+        <a href="https://www.tiktok.com/@deepmapping?_t=8rcdlvE8mNb&_r=1" target="_blank" aria-label="TikTok">
             <img src="assets/imagenes/tiktok.svg" alt="TikTok" class="social-icon">
         </a>
-    </div>
+    </nav>
 
     <!-- Video de fondo -->
-    <div id="video-container">
-        <video id="background-video" autoplay loop muted>
+    <div id="video-container" aria-hidden="true">
+        <video id="background-video" autoplay loop muted playsinline>
             <source src="assets/video/page.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+            <img src="assets/imagenes/fallback-image.jpg" alt="Fondo de video">
         </video>
     </div>
 
     <!-- Descripción interactiva -->
-    <div id="description">
+    <section id="description" aria-labelledby="description-heading">
+        <h1 id="description-heading" class="visually-hidden">Sobre DeepMapping</h1>
         <p>Somos un equipo creativo que se especializa en la producción de experiencias visuales interactivas...</p>
-    </div>
+    </section>
 
     <!-- Enlace a la galería -->
-    <div id="gallery-link">
+    <section id="gallery-link">
         <a href="gallery.html">Ver Galería de Imágenes</a>
-    </div>
+    </section>
 
     <!-- Footer fijo con enlaces a otras páginas -->
-    <footer>
-        <div class="footer-links">
+    <footer class="footer">
+        <nav class="footer-links" aria-label="Enlaces de footer">
             <a href="politica_privacidad.html">Política de Privacidad</a> |
             <a href="terminos_servicio.html">Términos y Condiciones</a> |
             <a href="contacto.html">Contáctanos</a>
-        </div>
+        </nav>
         <p>&copy; 2024 DeepMapping. Todos los derechos reservados.</p>
     </footer>
 </body>
