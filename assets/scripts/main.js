@@ -1,14 +1,14 @@
 // Función para mostrar la galería al pasar el cursor
-const gallery = document.getElementById('gallery');
+const galleryLink = document.getElementById('gallery-link');
 const galleryImages = document.getElementById('gallery-images');
 
 // Manejadores de eventos para la galería
-gallery.addEventListener('mouseenter', function() {
-    gallery.classList.add('show-images');
+galleryLink.addEventListener('mouseenter', function() {
+    galleryLink.classList.add('show-images');
 });
 
-gallery.addEventListener('mouseleave', function() {
-    gallery.classList.remove('show-images');
+galleryLink.addEventListener('mouseleave', function() {
+    galleryLink.classList.remove('show-images');
 });
 
 // Activar la visualización de la descripción cuando el cursor está sobre ella
@@ -43,7 +43,7 @@ document.addEventListener('mousemove', (e) => {
 });
 
 // Función para redirigir al hacer clic en el logo
-const logo = document.querySelector('.logo');
+const logo = document.querySelector('#logo img');
 logo.addEventListener('click', function(event) {
     window.location.href = 'index.html';
 });
