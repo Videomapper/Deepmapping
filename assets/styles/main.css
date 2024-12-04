@@ -13,7 +13,10 @@ body {
 header {
     padding: 20px;
     text-align: center;
-    background-color: transparent;
+    background-color: transparent; /* Fondo transparente */
+    position: absolute;
+    width: 100%;
+    z-index: 100;
 }
 
 header #logo img {
@@ -23,10 +26,13 @@ header #logo img {
 
 /* Contenedor de video */
 #video-container {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    z-index: -1; /* El video estará detrás del contenido */
 }
 
 #background-video {
@@ -127,9 +133,9 @@ footer p {
 
 /* Redes Sociales */
 #social-media {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position: fixed; /* Fijo en la parte inferior */
+    bottom: 60px; /* Espacio desde el fondo, justo encima del footer */
+    right: 20px; /* Alineado a la derecha */
 }
 
 #social-media a {
