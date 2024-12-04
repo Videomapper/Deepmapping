@@ -1,31 +1,32 @@
 // Activar la visualización de la descripción cuando el cursor está sobre ella
-const description = document.querySelector('#description');
+const description = document.getElementById('description');
 
-document.addEventListener('mousemove', (event) => {
-    const isHovered = event.target.closest('#description') !== null;
-    description.classList.toggle('show', isHovered);
+document.addEventListener('mousemove', function(event) {
+    if (event.target.closest('#description')) {
+        description.classList.add('show'); // Mostrar descripción
+    } else {
+        description.classList.remove('show'); // Ocultar descripción
+    }
 });
 
-// Animación de partículas para el cursor
-document.addEventListener('mousemove', (event) => {
+// Partículas interactivas
+document.body.insertAdjacentHTML('beforeend', '<div class="particles-container"></div>');
+
+document.addEventListener('mousemove', (e) => {
+    let x = e.clientX;
+    let y = e.clientY;
     const cursorParticles = document.querySelector('.particles-container');
-    const x = event.clientX;
-    const y = event.clientY;
-
-    if (!cursorParticles) return; // Verificar que el contenedor de partículas exista
-
-    // Crear y personalizar una partícula
-    const particle = document.createElement('div');
-    particle.classList.add('cursor-particle');
-    particle.style.left = `${x}px`;
-    particle.style.top = `${y}px`;
-    particle.style.backgroundColor = `rgba(255, 255, 255, ${Math.random().toFixed(2)})`;
-
-    // Añadir la partícula al contenedor
-    cursorParticles.appendChild(particle);
-
-    // Remover la partícula después de 1 segundo
-    setTimeout(() => {
-        particle.remove();
-    }, 1000);
+    
+    for (let i = 0; i < 10; i++) {
+        let particle = document.createElement('div');
+        particle.classList.add('cursor-particle');
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        particle.style.backgroundColor = `rgba(255, 255, 255, ${Math.random()})`;
+        cursorParticles.appendChild(particle);
+        
+        setTimeout(() => {
+            particle.remove();
+        }, 1000);
+    }
 });
