@@ -134,3 +134,69 @@ footer {
         opacity: 0;
     }
 }
+
+/* Media Queries para Pantallas Pequeñas */
+@media (max-width: 768px) {
+    #description {
+        font-size: 18px; /* Ajustar tamaño del texto en pantallas más pequeñas */
+        max-width: 95%;
+    }
+
+    #logo img {
+        width: 120px; /* Reducir tamaño del logo en pantallas pequeñas */
+    }
+
+    #social-media {
+        bottom: 30px; /* Mover los iconos de redes sociales más cerca del footer */
+        right: 10px;
+    }
+
+    .social-icon {
+        width: 35px; /* Reducir tamaño de los iconos de redes sociales */
+    }
+
+    #gallery-link {
+        bottom: 60px; /* Mover enlace de la galería más cerca del footer */
+        left: 10px;
+    }
+
+    footer {
+        padding: 20px 10px; /* Ajustar el padding del footer en pantallas pequeñas */
+    }
+
+    .footer-links a {
+        margin: 0 5px; /* Reducir márgenes entre enlaces */
+    }
+}
+
+/* Media Queries para dispositivos móviles */
+@media (max-width: 480px) {
+    #description {
+        font-size: 16px; /* Reducir tamaño del texto en pantallas muy pequeñas */
+    }
+
+    #logo img {
+        width: 100px; /* Ajustar aún más el tamaño del logo en móviles */
+    }
+
+    #social-media {
+        bottom: 20px;
+        right: 5px;
+    }
+
+    .social-icon {
+        width: 30px; /* Hacer los iconos aún más pequeños */
+    }
+
+    #gallery-link {
+        bottom: 50px; /* Ajustar la posición del enlace en móviles */
+    }
+
+    footer {
+        padding: 15px 5px; /* Ajustar el padding en dispositivos muy pequeños */
+    }
+
+    .footer-links a {
+        margin: 0 3px; /* Reducir márgenes entre enlaces aún más */
+    }
+}
