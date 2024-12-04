@@ -71,8 +71,8 @@ header {
 /* Descripción interactiva */
 #description {
     position: fixed;
-    bottom: 50px;
-    left: 0px;
+    bottom: 70px;
+    left: 50px;
     transform: translate(-50%, -50%);
     text-align: center;
     display: none; /* Oculto por defecto */
