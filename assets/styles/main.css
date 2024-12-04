@@ -89,7 +89,8 @@ header {
 }
 
 body:hover #description {
-    display: block;
+    display: flex;
+    gap: 15px;
 }
 
 /* Galería */
