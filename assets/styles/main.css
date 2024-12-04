@@ -1,202 +1,157 @@
-/* Estilos generales */
+/* Reset y estilos básicos */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Fondo general oscuro */
 body {
+    background-color: #1c1c1c;
+    color: #fff;
     font-family: 'Arial', sans-serif;
-    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* Header */
-header {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-}
-
-#logo img {
-    width: 150px;
-}
-
-/* Video de fondo */
-#video-container {
+/* Logo en el header */
+.header {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-#background-video {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-}
-
-/* Descripción interactiva */
-#description {
-    position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+    z-index: 100;
+    padding: 1rem;
+}
+
+.header__logo img {
+    max-width: 150px;
+}
+
+/* Enlace de retroceso */
+#back-link {
     text-align: center;
-    font-size: 24px;
-    max-width: 90%;
-    opacity: 0; /* Inicialmente oculto */
-    pointer-events: none;
-    transition: opacity 0.3s ease;
+    margin-top: 5rem;
 }
 
-#description.show {
-    opacity: 1; /* Aparece al mover el cursor sobre el área */
-}
-
-/* Estilos de redes sociales */
-#social-media {
-    position: fixed;
-    bottom: 60px;
-    right: 20px;
-    z-index: 2;
-}
-
-.social-icon {
-    width: 40px;
-    margin: 10px;
-}
-
-/* Enlace a la galería */
-#gallery-link {
-    position: fixed;
-    bottom: 100px;
-    left: 20px;
-    z-index: 2;
-}
-
-#gallery-link a {
+#back-link a {
+    color: #f0f0f0;
     text-decoration: none;
-    font-size: 18px;
-    color: white;
-    background-color: #000;
-    padding: 10px;
-    border-radius: 5px;
+    font-size: 1.1rem;
 }
 
-/* Footer */
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    color: white;
+#back-link a:hover {
+    color: #ccc;
+}
+
+/* Estilos de la galería */
+.gallery {
+    margin-top: 6rem;
+    padding: 2rem;
     text-align: center;
-    padding: 10px;
 }
 
+/* Título de la galería */
+.gallery__title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Cuadrícula de imágenes */
+.gallery-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+.gallery-item {
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #444;
+}
+
+/* Títulos de cada imagen */
+.gallery-item h3 {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #f0f0f0;
+}
+
+/* Descripción de cada imagen */
+.gallery-item figcaption {
+    font-size: 0.9rem;
+    color: #bbb;
+    padding-top: 0.5rem;
+}
+
+/* Estilos del footer */
+.footer {
+    background-color: #1c1c1c;
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer a {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #fff;
+}
+
+/* Enlaces del footer */
 .footer-links {
-    margin-bottom: 10px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
 }
 
 .footer-links a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
+    margin: 0 1rem;
+    color: #bbb;
 }
 
-/* Transiciones de partículas */
-.particles-container {
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.footer-links a:hover {
+    color: #fff;
 }
 
-.cursor-particle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: particle-animation 1s forwards;
-}
-
-@keyframes particle-animation {
-    to {
-        transform: scale(0);
-        opacity: 0;
-    }
-}
-
-/* Media Queries para Pantallas Pequeñas */
+/* Media Queries para responsividad */
 @media (max-width: 768px) {
-    #description {
-        font-size: 18px; /* Ajustar tamaño del texto en pantallas más pequeñas */
-        max-width: 95%;
+    .gallery-images {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 
-    #logo img {
-        width: 120px; /* Reducir tamaño del logo en pantallas pequeñas */
+    .gallery__title {
+        font-size: 2rem;
     }
 
-    #social-media {
-        bottom: 30px; /* Mover los iconos de redes sociales más cerca del footer */
-        right: 10px;
+    .gallery-item h3 {
+        font-size: 1.1rem;
     }
 
-    .social-icon {
-        width: 35px; /* Reducir tamaño de los iconos de redes sociales */
+    .gallery-item figcaption {
+        font-size: 0.8rem;
     }
 
-    #gallery-link {
-        bottom: 60px; /* Mover enlace de la galería más cerca del footer */
-        left: 10px;
-    }
-
-    footer {
-        padding: 20px 10px; /* Ajustar el padding del footer en pantallas pequeñas */
-    }
-
-    .footer-links a {
-        margin: 0 5px; /* Reducir márgenes entre enlaces */
-    }
-}
-
-/* Media Queries para dispositivos móviles */
-@media (max-width: 480px) {
-    #description {
-        font-size: 16px; /* Reducir tamaño del texto en pantallas muy pequeñas */
-    }
-
-    #logo img {
-        width: 100px; /* Ajustar aún más el tamaño del logo en móviles */
-    }
-
-    #social-media {
-        bottom: 20px;
-        right: 5px;
-    }
-
-    .social-icon {
-        width: 30px; /* Hacer los iconos aún más pequeños */
-    }
-
-    #gallery-link {
-        bottom: 50px; /* Ajustar la posición del enlace en móviles */
-    }
-
-    footer {
-        padding: 15px 5px; /* Ajustar el padding en dispositivos muy pequeños */
-    }
-
-    .footer-links a {
-        margin: 0 3px; /* Reducir márgenes entre enlaces aún más */
+    .header__logo img {
+        max-width: 120px;
     }
 }
