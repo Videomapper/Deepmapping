@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galería de imágenes de DeepMapping. Explora nuestros proyectos de videomapping.">
     <title>Galería | DeepMapping</title>
     <link rel="stylesheet" href="assets/styles/main.css">
     <script src="assets/scripts/gallery.js" defer></script>
 </head>
 <body>
+
     <!-- Header con el logo del proyecto -->
     <header class="header">
         <div class="header__logo">
             <a href="index.html" aria-label="Volver a la página principal">
-                <img src="assets/imagenes/logo.png" alt="DeepMapping Logo">
+                <img src="assets/imagenes/logo.png" alt="DeepMapping Logo" class="logo">
             </a>
         </div>
     </header>
@@ -26,26 +28,31 @@
     <main class="gallery" id="gallery">
         <h1 class="gallery__title">Galería de Imágenes</h1>
         <section class="gallery-images" id="gallery-images">
-            <figure>
+            <div class="gallery-item">
                 <img src="assets/imagenes/img1.jpg" alt="Descripción breve de la Imagen 1">
-                <figcaption>Descripción de la Imagen 1</figcaption>
-            </figure>
-            <figure>
+                <h3>Proyecto 1</h3>
+                <figcaption>Descripción de la Imagen 1: Una breve explicación del proyecto o visualización.</figcaption>
+            </div>
+            <div class="gallery-item">
                 <img src="assets/imagenes/img2.png" alt="Descripción breve de la Imagen 2">
-                <figcaption>Descripción de la Imagen 2</figcaption>
-            </figure>
-            <figure>
+                <h3>Proyecto 2</h3>
+                <figcaption>Descripción de la Imagen 2: Aquí se describe el objetivo y detalles de la imagen mostrada.</figcaption>
+            </div>
+            <div class="gallery-item">
                 <img src="assets/imagenes/img3.png" alt="Descripción breve de la Imagen 3">
-                <figcaption>Descripción de la Imagen 3</figcaption>
-            </figure>
-            <figure>
+                <h3>Proyecto 3</h3>
+                <figcaption>Descripción de la Imagen 3: Explicación del proyecto y contexto visual de la imagen.</figcaption>
+            </div>
+            <div class="gallery-item">
                 <img src="assets/imagenes/img4.png" alt="Descripción breve de la Imagen 4">
-                <figcaption>Descripción de la Imagen 4</figcaption>
-            </figure>
-            <figure>
+                <h3>Proyecto 4</h3>
+                <figcaption>Descripción de la Imagen 4: Un detalle sobre el proceso creativo de este proyecto.</figcaption>
+            </div>
+            <div class="gallery-item">
                 <img src="assets/imagenes/img5.jpg" alt="Descripción breve de la Imagen 5">
-                <figcaption>Descripción de la Imagen 5</figcaption>
-            </figure>
+                <h3>Proyecto 5</h3>
+                <figcaption>Descripción de la Imagen 5: Explicación técnica y creativa sobre la imagen presentada.</figcaption>
+            </div>
         </section>
     </main>
 
@@ -57,5 +64,6 @@
         </nav>
         <p>&copy; 2024 DeepMapping. Todos los derechos reservados.</p>
     </footer>
+
 </body>
 </html>
