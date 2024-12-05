@@ -1,30 +1,24 @@
-/* Resetear estilos básicos */
-* {
+/* Reset básico */
+body, h1, h2, h3, p, ul, li, a {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    font-size: 16px;
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #181818;
+    font-family: Arial, sans-serif;
     color: #fff;
-    overflow-x: hidden;
-    position: relative;
+    background-color: #000;
 }
 
-/* Fondo de video y contenedor principal */
+/* Contenedor del video */
 #video-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     z-index: -1;
 }
 
@@ -32,139 +26,98 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.4); /* Reducir brillo del video */
 }
 
-/* Estilos del header */
+/* Header */
 header {
     position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 20px;
+    left: 20px;
     z-index: 10;
 }
 
 #logo img {
-    width: 150px;
-    height: auto;
-    cursor: pointer;
+    max-width: 150px;
 }
 
-/* Texto de descripción que aparece y desaparece según el cursor */
+/* Descripción */
 #description {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 700;
-    display: none; /* Por defecto está oculto */
+    max-width: 600px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
 }
 
-/* Estilos de los iconos de redes sociales */
+#description p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Redes sociales */
 #social-media {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 10;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
 }
 
 .social-icon {
     width: 40px;
     height: 40px;
-    background-color: #333;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    text-decoration: none;
-    margin: 0.5rem;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .social-icon:hover {
-    background-color: #444;
-    filter: brightness(1.2);
+    transform: scale(1.1);
 }
 
-/* Botón de Galería */
+/* Galería */
 #gallery-link {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    z-index: 10;
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 30px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
-    cursor: pointer;
-    font-size: 1rem;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 10px;
 }
 
-#gallery-link:hover {
-    background-color: #444;
+#gallery-link a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
 }
 
 /* Footer */
 footer {
     position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
-    background-color: #222;
-    padding: 1rem 0;
     text-align: center;
-    z-index: 10;
-}
-
-.footer-links {
-    font-size: 1rem;
-    color: #bbb;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 10px 0;
 }
 
 .footer-links a {
-    color: #bbb;
     text-decoration: none;
-    margin: 0 1rem;
+    color: #fff;
+    margin: 0 10px;
+    transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-    color: #fff;
+    color: #00f;
 }
 
 footer p {
-    color: #bbb;
+    margin-top: 5px;
     font-size: 0.9rem;
-    margin-top: 0.5rem;
-}
-
-/* Estilos responsivos */
-@media (max-width: 768px) {
-    #description {
-        font-size: 1.5rem;
-    }
-
-    #social-media {
-        bottom: 20px;
-        right: 20px;
-    }
-
-    #gallery-link {
-        bottom: 20px;
-        left: 20px;
-    }
-
-    .footer-links {
-        font-size: 0.9rem;
-    }
-
-    footer p {
-        font-size: 0.8rem;
-    }
+    color: #888;
 }
