@@ -32,12 +32,14 @@ body {
 header {
     position: absolute;
     top: 20px;
-    left: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 10;
 }
 
 #logo img {
-    max-width: 150px;
+    max-width: 200px;
+    display: block;
 }
 
 /* Descripción */
@@ -54,27 +56,29 @@ header {
 }
 
 #description p {
-    font-size: 1.2rem;
-    line-height: 1.6;
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: #fff;
 }
 
 /* Redes sociales */
 #social-media {
     position: fixed;
-    bottom: 20px;
+    bottom: 80px;
     right: 20px;
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 
 .social-icon {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     transition: transform 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
 }
 
 .social-icon:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 /* Galería */
@@ -85,7 +89,7 @@ header {
     transform: translateX(-50%);
     text-align: center;
     background: rgba(0, 0, 0, 0.7);
-    padding: 10px 20px;
+    padding: 10px 30px;
     border-radius: 10px;
 }
 
@@ -93,6 +97,7 @@ header {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
+    font-size: 1.2rem;
 }
 
 /* Footer */
@@ -108,7 +113,8 @@ footer {
 .footer-links a {
     text-decoration: none;
     color: #fff;
-    margin: 0 10px;
+    margin: 0 15px;
+    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
