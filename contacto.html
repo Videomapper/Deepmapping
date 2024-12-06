@@ -1,31 +1,27 @@
-<!-- contacto.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Formulario de contacto de DeepMapping. Envíanos un mensaje para más información sobre nuestros proyectos de videomapping.">
     <title>Contacto - DeepMapping</title>
     <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="icon" href="assets/imagenes/logo.png" type="image/png">
+    <script src="assets/scripts/scripts.js" defer></script>
 </head>
 <body>
-
-    <!-- Header -->
     <header>
-        <a href="index.html">
-            <img src="assets/imagenes/logo.png" alt="DeepMapping Logo" class="logo">
-        </a>
+        <div id="logo">
+            <a href="index.html"><img src="assets/imagenes/logo.png" alt="Logotipo DeepMapping"></a>
+        </div>
     </header>
 
-    <!-- Formulario de contacto -->
-    <div class="contact-form">
-        <h1>Contacto</h1>
-        <p>Si tienes preguntas o te gustaría colaborar con nosotros, completa el siguiente formulario:</p>
-        <form action="mailto:info@deepmapping.com" method="post" enctype="text/plain">
+    <main id="contact">
+        <h1>Contáctanos</h1>
+        <form id="contact-form">
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" required>
 
-            <label for="email">Correo electrónico:</label>
+            <label for="email">Correo Electrónico:</label>
             <input type="email" id="email" name="email" required>
 
             <label for="message">Mensaje:</label>
@@ -33,14 +29,15 @@
 
             <button type="submit">Enviar</button>
         </form>
-    </div>
+    </main>
 
     <footer>
         <div class="footer-links">
-            <a href="politica_privacidad.html">Política de Privacidad</a>
-            <a href="terminos_servicio.html">Términos de Servicio</a>
+            <a href="gallery.html">Galería</a> |
+            <a href="politica_privacidad.html">Política de Privacidad</a> |
+            <a href="terminos_servicio.html">Términos y Condiciones</a>
         </div>
-        <p>&copy; 2024 DeepMapping</p>
+        <p>&copy; 2024 DeepMapping. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
