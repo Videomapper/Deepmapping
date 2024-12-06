@@ -1,52 +1,37 @@
-<!-- gallery.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Galería de DeepMapping. Descubre imágenes de nuestros proyectos de videomapping.">
     <title>Galería - DeepMapping</title>
     <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="icon" href="assets/imagenes/logo.png" type="image/png">
+    <script src="assets/scripts/scripts.js" defer></script>
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <a href="index.html">
-            <img src="assets/imagenes/logo.png" alt="DeepMapping Logo" class="logo">
-        </a>
+        <div id="logo">
+            <a href="index.html"><img src="assets/imagenes/logo.png" alt="Logotipo DeepMapping"></a>
+        </div>
     </header>
 
-    <!-- Galería -->
-    <div class="gallery">
+    <main id="gallery">
         <h1>Galería de Imágenes</h1>
         <div class="gallery-container">
-            <!-- Cada imagen incluye título y pie de foto -->
-            <div class="gallery-item">
-                <img src="assets/imagenes/proyecto1.jpg" alt="Proyecto 1">
-                <h3>Proyecto 1</h3>
-                <p>Videomapping en centro histórico.</p>
-            </div>
-            <div class="gallery-item">
-                <img src="assets/imagenes/proyecto2.jpg" alt="Proyecto 2">
-                <h3>Proyecto 2</h3>
-                <p>Intervención en fachada moderna.</p>
-            </div>
-            <div class="gallery-item">
-                <img src="assets/imagenes/proyecto3.jpg" alt="Proyecto 3">
-                <h3>Proyecto 3</h3>
-                <p>Arte digital y mapping generativo.</p>
-            </div>
+            <img src="assets/imagenes/imagen1.jpg" alt="Descripción Imagen 1">
+            <img src="assets/imagenes/imagen2.jpg" alt="Descripción Imagen 2">
+            <img src="assets/imagenes/imagen3.jpg" alt="Descripción Imagen 3">
+            <!-- Agrega más imágenes aquí -->
         </div>
-    </div>
+    </main>
 
     <footer>
         <div class="footer-links">
-            <a href="politica_privacidad.html">Política de Privacidad</a>
-            <a href="terminos_servicio.html">Términos de Servicio</a>
+            <a href="politica_privacidad.html">Política de Privacidad</a> |
+            <a href="terminos_servicio.html">Términos y Condiciones</a> |
+            <a href="contacto.html">Contáctanos</a>
         </div>
-        <p>&copy; 2024 DeepMapping</p>
+        <p>&copy; 2024 DeepMapping. Todos los derechos reservados.</p>
     </footer>
-
-    <script src="assets/scripts/gallery.js"></script>
 </body>
 </html>
