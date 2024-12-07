@@ -52,26 +52,30 @@ header {
 /* Redes sociales */
 #social-icons {
     position: fixed;
-    bottom: 50px;
+    bottom: 20px;
     right: 20px;
     display: flex;
-    gap: 15px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
 }
 
 .social-icon {
-    width: 40px;
-    height: 40px;
-    transition: transform 0.3s ease;
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8;
 }
 
 .social-icon:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
+    opacity: 1;
 }
 
 /* Enlace galería */
 #gallery-link {
     position: fixed;
-    bottom: 50px;
+    bottom: 20px;
     left: 20px;
     background-color: rgba(0, 0, 0, 0.8);
     padding: 10px 15px;
