@@ -142,14 +142,65 @@ form button:hover {
     background-color: #00e5ff;
 }
 
+/* Redes sociales */
+.social-icons {
+    position: fixed;
+    bottom: 60px; /* Justo arriba del footer */
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #00bcd4;
+}
+
+.social-icons img {
+    width: 100%;
+    height: auto;
+}
+
+/* Botón de galería */
+#gallery-link {
+    position: fixed;
+    bottom: 60px; /* Justo arriba del footer */
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+#gallery-link:hover {
+    background-color: #00bcd4;
+}
+
 /* Footer */
 footer {
     background-color: rgba(0, 0, 0, 0.9);
     color: #888;
     padding: 20px 0;
     text-align: center;
-    position: relative;
-    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 .footer-links a {
